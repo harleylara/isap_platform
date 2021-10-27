@@ -7,7 +7,7 @@
             <field name="url">/jobs</field>
         </record>
         <record id="base.open_menu" model="ir.actions.todo">
-            <field name="action_id" ref="action_open_website"/>
+            <field name="action_id" ref="action_open_website" />
             <field name="state">open</field>
         </record>
     </data>
@@ -25,9 +25,16 @@
                 'email_from',
                 'partner_name',
                 'partner_phone',
+                'partner_mobile',
+                'partner_birthday',
+                'partner_school',
+                'partner_faculty',
+                'partner_department',
+                'type_id',
+                'type_id_country',
                 'job_id',
                 'department_id',
-            ]"/>
+            ]" />
         </function>
     </data>
 </odoo>

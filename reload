@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker exec -it -u 0 odoo cp -r /mnt/extra-addons/hr_recruitment/ /usr/lib/python3/dist-packages/odoo/addons/
+docker exec -it -u 0 odoo cp -r /mnt/extra-addons/hr_recruitment/ /mnt/extra-addons/website_hr_recruitment/ /mnt/extra-addons/hr/ /usr/lib/python3/dist-packages/odoo/addons/
 docker restart odoo

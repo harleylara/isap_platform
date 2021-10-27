@@ -145,7 +145,8 @@
                                 <field name="company_id" groups="base.group_multi_company" options='{"no_open":True}' />
                             </group>
                             <group string="Contract">
-                                <label for="salary_expected" />
+                                <!-- <field name="hr.gross_pay" /> -->
+                                <!-- <label for="salary_expected" />
                                 <div class="o_row">
                                     <field name="salary_expected" />
                                     <span attrs="{'invisible':[('salary_expected_extra','=',False)]}"> +</span>
@@ -156,7 +157,7 @@
                                     <field name="salary_proposed" />
                                     <span attrs="{'invisible':[('salary_proposed_extra','=',False)]}"> +</span>
                                     <field name="salary_proposed_extra" placeholder="Extra advantages..." />
-                                </div>
+                                </div> -->
                                 <field name="availability" />
                                 <field name="emp_id" invisible="1" />
                             </group>
