@@ -1,0 +1,1075 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Meeting Types (for interview meetings) -->
+        <record model="calendar.event.type" id="categ_meet_interview">
+            <field name="name">Interview</field>
+        </record>
+
+        <record model="hr.recruitment.degree" id="degree_graduate">
+            <field name="name">Graduate</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="hr.recruitment.degree" id="degree_bachelor">
+            <field name="name">Bachelor Degree</field>
+            <field name="sequence">2</field>
+        </record>
+        <record model="hr.recruitment.degree" id="degree_licenced">
+            <field name="name">Master Degree</field>
+            <field name="sequence">3</field>
+        </record>
+        <record model="hr.recruitment.degree" id="degree_bac5">
+            <field name="name">Doctoral Degree</field>
+            <field name="sequence">4</field>
+        </record>
+
+
+        <!-- Country Types -->
+        <record model="hr.applicant.country" id="country_Afganistan">
+            <field name="name">Afghanistan</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Albania">
+            <field name="name">Albania</field>
+            <field name="sequence">2</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Algeria">
+            <field name="name">Algeria</field>
+            <field name="sequence">3</field>
+        </record>
+        <record model="hr.applicant.country" id="country_American_Samoa">
+            <field name="name">American Samoa</field>
+            <field name="sequence">4</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Andorra">
+            <field name="name">Andorra</field>
+            <field name="sequence">5</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Angola">
+            <field name="name">Angola</field>
+            <field name="sequence">6</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Anguilla">
+            <field name="name">Anguilla</field>
+            <field name="sequence">7</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Antigua_Barbuda">
+            <field name="name">Antigua &amp; Barbuda</field>
+            <field name="sequence">8</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Argentina">
+            <field name="name">Argentina</field>
+            <field name="sequence">9</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Armenia">
+            <field name="name">Armenia</field>
+            <field name="sequence">10</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Aruba">
+            <field name="name">Aruba</field>
+            <field name="sequence">11</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Australia">
+            <field name="name">Australia</field>
+            <field name="sequence">12</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Austria">
+            <field name="name">Austria</field>
+            <field name="sequence">13</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Azerbaijan">
+            <field name="name">Azerbaijan</field>
+            <field name="sequence">14</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Bahamas">
+            <field name="name">Bahamas</field>
+            <field name="sequence">15</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Bahrain">
+            <field name="name">Bahrain</field>
+            <field name="sequence">16</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Bangladesh">
+            <field name="name">Bangladesh</field>
+            <field name="sequence">17</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Barbados">
+            <field name="name">Barbados</field>
+            <field name="sequence">18</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Belarus">
+            <field name="name">Belarus</field>
+            <field name="sequence">19</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Belgium">
+            <field name="name">Belgium</field>
+            <field name="sequence">20</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Belize">
+            <field name="name">Belize</field>
+            <field name="sequence">21</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Benin">
+            <field name="name">Benin</field>
+            <field name="sequence">22</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Bermuda">
+            <field name="name">Bermuda</field>
+            <field name="sequence">23</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Bhutan">
+            <field name="name">Bhutan</field>
+            <field name="sequence">24</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Bolivia">
+            <field name="name">Bolivia</field>
+            <field name="sequence">25</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Bonaire">
+            <field name="name">Bonaire</field>
+            <field name="sequence">26</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Bosnia_Herzegovina">
+            <field name="name">Bosnia &amp; Herzegovina</field>
+            <field name="sequence">27</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Botswana">
+            <field name="name">Botswana</field>
+            <field name="sequence">28</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Brazil">
+            <field name="name">Brazil</field>
+            <field name="sequence">29</field>
+        </record>
+        <record model="hr.applicant.country" id="country_British_Indian_Ocean_Ter">
+            <field name="name">British Indian Ocean Ter</field>
+            <field name="sequence">30</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Brunei">
+            <field name="name">Brunei</field>
+            <field name="sequence">31</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Bulgaria">
+            <field name="name">Bulgaria</field>
+            <field name="sequence">32</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Burkina_Faso">
+            <field name="name">Burkina Faso</field>
+            <field name="sequence">33</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Burundi">
+            <field name="name">Burundi</field>
+            <field name="sequence">34</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Cambodia">
+            <field name="name">Cambodia</field>
+            <field name="sequence">35</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Cameroon">
+            <field name="name">Cameroon</field>
+            <field name="sequence">36</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Canada">
+            <field name="name">Canada</field>
+            <field name="sequence">37</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Canary_Islands">
+            <field name="name">Canary Islands</field>
+            <field name="sequence">38</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Cape_Verde">
+            <field name="name">Cape Verde</field>
+            <field name="sequence">39</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Cayman_Islands">
+            <field name="name">Cayman Islands</field>
+            <field name="sequence">40</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Central_African_Republic">
+            <field name="name">Central African Republic</field>
+            <field name="sequence">41</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Chad">
+            <field name="name">Chad</field>
+            <field name="sequence">42</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Channel_Islands">
+            <field name="name">Channel Islands</field>
+            <field name="sequence">43</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Chile">
+            <field name="name">Chile</field>
+            <field name="sequence">44</field>
+        </record>
+        <record model="hr.applicant.country" id="country_China">
+            <field name="name">China</field>
+            <field name="sequence">45</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Christmas_Island">
+            <field name="name">Christmas Island</field>
+            <field name="sequence">46</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Cocos_Island">
+            <field name="name">Cocos Island</field>
+            <field name="sequence">47</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Colombia">
+            <field name="name">Colombia</field>
+            <field name="sequence">48</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Comoros">
+            <field name="name">Comoros</field>
+            <field name="sequence">49</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Congo">
+            <field name="name">Congo</field>
+            <field name="sequence">50</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Cook_Islands">
+            <field name="name">Cook Islands</field>
+            <field name="sequence">51</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Costa_Rica">
+            <field name="name">Costa Rica</field>
+            <field name="sequence">52</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Cote_DIvoire">
+            <field name="name">Cote D'Ivoire</field>
+            <field name="sequence">53</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Croatia">
+            <field name="name">Croatia</field>
+            <field name="sequence">54</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Cuba">
+            <field name="name">Cuba</field>
+            <field name="sequence">55</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Curaco">
+            <field name="name">Curacao</field>
+            <field name="sequence">56</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Cyprus">
+            <field name="name">Cyprus</field>
+            <field name="sequence">57</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Czech_Republic">
+            <field name="name">Czech Republic</field>
+            <field name="sequence">58</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Denmark">
+            <field name="name">Denmark</field>
+            <field name="sequence">59</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Djibouti">
+            <field name="name">Djibouti</field>
+            <field name="sequence">60</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Dominica">
+            <field name="name">Dominica</field>
+            <field name="sequence">61</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Dominican_Republic">
+            <field name="name">Dominican Republic</field>
+            <field name="sequence">62</field>
+        </record>
+        <record model="hr.applicant.country" id="country_East_Timor">
+            <field name="name">East Timor</field>
+            <field name="sequence">63</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Ecuador">
+            <field name="name">Ecuador</field>
+            <field name="sequence">64</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Egypt">
+            <field name="name">Egypt</field>
+            <field name="sequence">65</field>
+        </record>
+        <record model="hr.applicant.country" id="country_El_Salvador">
+            <field name="name">El Salvador</field>
+            <field name="sequence">66</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Equatorial_Guinea">
+            <field name="name">Equatorial Guinea</field>
+            <field name="sequence">67</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Eritrea">
+            <field name="name">Eritrea</field>
+            <field name="sequence">68</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Estonia">
+            <field name="name">Estonia</field>
+            <field name="sequence">69</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Ethiopia">
+            <field name="name">Ethiopia</field>
+            <field name="sequence">70</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Falkland_Islands">
+            <field name="name">Falkland Islands</field>
+            <field name="sequence">71</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Faroe_Islands">
+            <field name="name">Faroe Islands</field>
+            <field name="sequence">72</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Fiji">
+            <field name="name">Fiji</field>
+            <field name="sequence">73</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Finland">
+            <field name="name">Finland</field>
+            <field name="sequence">74</field>
+        </record>
+        <record model="hr.applicant.country" id="country_France">
+            <field name="name">France</field>
+            <field name="sequence">75</field>
+        </record>
+        <record model="hr.applicant.country" id="country_French_Guiana">
+            <field name="name">French Guiana</field>
+            <field name="sequence">76</field>
+        </record>
+        <record model="hr.applicant.country" id="country_French_Polynesia">
+            <field name="name">French Polynesia</field>
+            <field name="sequence">77</field>
+        </record>
+        <record model="hr.applicant.country" id="country_French_Southern_Ter">
+            <field name="name">French Southern Ter</field>
+            <field name="sequence">78</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Gabon">
+            <field name="name">Gabon</field>
+            <field name="sequence">79</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Gambia">
+            <field name="name">Gambia</field>
+            <field name="sequence">80</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Georgia">
+            <field name="name">Georgia</field>
+            <field name="sequence">81</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Germany">
+            <field name="name">Germany</field>
+            <field name="sequence">82</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Ghana">
+            <field name="name">Ghana</field>
+            <field name="sequence">83</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Gibraltar">
+            <field name="name">Gibraltar</field>
+            <field name="sequence">84</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Great_Britain">
+            <field name="name">Great Britain</field>
+            <field name="sequence">85</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Greece">
+            <field name="name">Greece</field>
+            <field name="sequence">86</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Greenland">
+            <field name="name">Greenland</field>
+            <field name="sequence">87</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Grenada">
+            <field name="name">Grenada</field>
+            <field name="sequence">88</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Guadeloupe">
+            <field name="name">Guadeloupe</field>
+            <field name="sequence">89</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Guam">
+            <field name="name">Guam</field>
+            <field name="sequence">90</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Guatemala">
+            <field name="name">Guatemala</field>
+            <field name="sequence">91</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Guinea">
+            <field name="name">Guinea</field>
+            <field name="sequence">92</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Guyana">
+            <field name="name">Guyana</field>
+            <field name="sequence">93</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Haiti">
+            <field name="name">Haiti</field>
+            <field name="sequence">94</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Hawaii">
+            <field name="name">Hawaii</field>
+            <field name="sequence">95</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Honduras">
+            <field name="name">Honduras</field>
+            <field name="sequence">96</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Hong_Kong">
+            <field name="name">Hong Kong</field>
+            <field name="sequence">97</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Hungary">
+            <field name="name">Hungary</field>
+            <field name="sequence">98</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Iceland">
+            <field name="name">Iceland</field>
+            <field name="sequence">99</field>
+        </record>
+        <record model="hr.applicant.country" id="country_India">
+            <field name="name">India</field>
+            <field name="sequence">100</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Indonesia">
+            <field name="name">Indonesia</field>
+            <field name="sequence">101</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Iran">
+            <field name="name">Iran</field>
+            <field name="sequence">102</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Iraq">
+            <field name="name">Iraq</field>
+            <field name="sequence">103</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Ireland">
+            <field name="name">Ireland</field>
+            <field name="sequence">104</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Isle_of_Man">
+            <field name="name">Isle of Man</field>
+            <field name="sequence">105</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Israel">
+            <field name="name">Israel</field>
+            <field name="sequence">106</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Italy">
+            <field name="name">Italy</field>
+            <field name="sequence">107</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Jamaica">
+            <field name="name">Jamaica</field>
+            <field name="sequence">108</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Japan">
+            <field name="name">Japan</field>
+            <field name="sequence">109</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Jordan">
+            <field name="name">Jordan</field>
+            <field name="sequence">110</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Kazakhstan">
+            <field name="name">Kazakhstan</field>
+            <field name="sequence">111</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Kenya">
+            <field name="name">Kenya</field>
+            <field name="sequence">112</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Kiribati">
+            <field name="name">Kiribati</field>
+            <field name="sequence">113</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Korea_North">
+            <field name="name">Korea North</field>
+            <field name="sequence">114</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Korea_Sout">
+            <field name="name">Korea South</field>
+            <field name="sequence">115</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Kuwait">
+            <field name="name">Kuwait</field>
+            <field name="sequence">116</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Kyrgyzstan">
+            <field name="name">Kyrgyzstan</field>
+            <field name="sequence">117</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Laos">
+            <field name="name">Laos</field>
+            <field name="sequence">118</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Latvia">
+            <field name="name">Latvia</field>
+            <field name="sequence">119</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Lebanon">
+            <field name="name">Lebanon</field>
+            <field name="sequence">120</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Lesotho">
+            <field name="name">Lesotho</field>
+            <field name="sequence">121</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Liberia">
+            <field name="name">Liberia</field>
+            <field name="sequence">122</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Libya">
+            <field name="name">Libya</field>
+            <field name="sequence">123</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Liechtenstein">
+            <field name="name">Liechtenstein</field>
+            <field name="sequence">124</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Lithuania">
+            <field name="name">Lithuania</field>
+            <field name="sequence">125</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Luxembourg">
+            <field name="name">Luxembourg</field>
+            <field name="sequence">126</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Macau">
+            <field name="name">Macau</field>
+            <field name="sequence">127</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Macedonia">
+            <field name="name">Macedonia</field>
+            <field name="sequence">128</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Madagascar">
+            <field name="name">Madagascar</field>
+            <field name="sequence">129</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Malaysia">
+            <field name="name">Malaysia</field>
+            <field name="sequence">130</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Malawi">
+            <field name="name">Malawi</field>
+            <field name="sequence">131</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Maldives">
+            <field name="name">Maldives</field>
+            <field name="sequence">132</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Mali">
+            <field name="name">Mali</field>
+            <field name="sequence">133</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Malta">
+            <field name="name">Malta</field>
+            <field name="sequence">134</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Marshall_Islands">
+            <field name="name">Marshall Islands</field>
+            <field name="sequence">135</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Martinique">
+            <field name="name">Martinique</field>
+            <field name="sequence">136</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Mauritania">
+            <field name="name">Mauritania</field>
+            <field name="sequence">137</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Mauritius">
+            <field name="name">Mauritius</field>
+            <field name="sequence">138</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Mayotte">
+            <field name="name">Mayotte</field>
+            <field name="sequence">139</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Mexico">
+            <field name="name">Mexico</field>
+            <field name="sequence">140</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Midway_Islands">
+            <field name="name">Midway Islands</field>
+            <field name="sequence">141</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Moldova">
+            <field name="name">Moldova</field>
+            <field name="sequence">142</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Monaco">
+            <field name="name">Monaco</field>
+            <field name="sequence">143</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Mongolia">
+            <field name="name">Mongolia</field>
+            <field name="sequence">144</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Montserrat">
+            <field name="name">Montserrat</field>
+            <field name="sequence">145</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Morocco">
+            <field name="name">Morocco</field>
+            <field name="sequence">146</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Mozambique">
+            <field name="name">Mozambique</field>
+            <field name="sequence">147</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Myanmar">
+            <field name="name">Myanmar</field>
+            <field name="sequence">148</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Nambia">
+            <field name="name">Nambia</field>
+            <field name="sequence">149</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Nauru">
+            <field name="name">Nauru</field>
+            <field name="sequence">150</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Nepal">
+            <field name="name">Nepal</field>
+            <field name="sequence">151</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Netherland_Antilles">
+            <field name="name">Netherland Antilles</field>
+            <field name="sequence">152</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Netherlands">
+            <field name="name">Netherlands (Holland, Europe)</field>
+            <field name="sequence">153</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Nevis">
+            <field name="name">Nevis</field>
+            <field name="sequence">154</field>
+        </record>
+        <record model="hr.applicant.country" id="country_New_Caledonia">
+            <field name="name">New Caledonia</field>
+            <field name="sequence">155</field>
+        </record>
+        <record model="hr.applicant.country" id="country_New_Zealand">
+            <field name="name">New Zealand</field>
+            <field name="sequence">156</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Nicaragua">
+            <field name="name">Nicaragua</field>
+            <field name="sequence">157</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Niger">
+            <field name="name">Niger</field>
+            <field name="sequence">158</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Nigeria">
+            <field name="name">Nigeria</field>
+            <field name="sequence">159</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Niue">
+            <field name="name">Niue</field>
+            <field name="sequence">160</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Norfolk_Island">
+            <field name="name">Norfolk Island</field>
+            <field name="sequence">161</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Norway">
+            <field name="name">Norway</field>
+            <field name="sequence">162</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Oman">
+            <field name="name">Oman</field>
+            <field name="sequence">163</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Pakistan">
+            <field name="name">Pakistan</field>
+            <field name="sequence">164</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Palau_Island">
+            <field name="name">Palau Island</field>
+            <field name="sequence">165</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Palestine">
+            <field name="name">Palestine</field>
+            <field name="sequence">166</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Panama">
+            <field name="name">Panama</field>
+            <field name="sequence">167</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Papua_New_Guinea">
+            <field name="name">Papua New Guinea</field>
+            <field name="sequence">168</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Paraguay">
+            <field name="name">Paraguay</field>
+            <field name="sequence">169</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Peru">
+            <field name="name">Peru</field>
+            <field name="sequence">170</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Phillipines">
+            <field name="name">Philippines</field>
+            <field name="sequence">171</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Pitcairn_Island">
+            <field name="name">Pitcairn Island</field>
+            <field name="sequence">172</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Poland">
+            <field name="name">Poland</field>
+            <field name="sequence">173</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Portugal">
+            <field name="name">Portugal</field>
+            <field name="sequence">174</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Puerto_Rico">
+            <field name="name">Puerto Rico</field>
+            <field name="sequence">175</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Qatar">
+            <field name="name">Qatar</field>
+            <field name="sequence">176</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Republic_of_Montenegro">
+            <field name="name">Republic of Montenegro</field>
+            <field name="sequence">177</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Republic_of_Serbia">
+            <field name="name">Republic of Serbia</field>
+            <field name="sequence">178</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Reunion">
+            <field name="name">Reunion</field>
+            <field name="sequence">179</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Romania">
+            <field name="name">Romania</field>
+            <field name="sequence">180</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Russia">
+            <field name="name">Russia</field>
+            <field name="sequence">181</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Rwanda">
+            <field name="name">Rwanda</field>
+            <field name="sequence">182</field>
+        </record>
+        <record model="hr.applicant.country" id="country_St_Barthelemy">
+            <field name="name">St Barthelemy</field>
+            <field name="sequence">183</field>
+        </record>
+        <record model="hr.applicant.country" id="country_St_Eustatius">
+            <field name="name">St Eustatius</field>
+            <field name="sequence">184</field>
+        </record>
+        <record model="hr.applicant.country" id="country_St_Helena">
+            <field name="name">St Helena</field>
+            <field name="sequence">185</field>
+        </record>
+        <record model="hr.applicant.country" id="country_St_Kitts-Nevis">
+            <field name="name">St Kitts-Nevis</field>
+            <field name="sequence">186</field>
+        </record>
+        <record model="hr.applicant.country" id="country_St_Lucia">
+            <field name="name">St Lucia</field>
+            <field name="sequence">187</field>
+        </record>
+        <record model="hr.applicant.country" id="country_St_Maarten">
+            <field name="name">St Maarten</field>
+            <field name="sequence">188</field>
+        </record>
+        <record model="hr.applicant.country" id="country_St_Pierre_Miquelon">
+            <field name="name">St Pierre &amp; Miquelon</field>
+            <field name="sequence">189</field>
+        </record>
+        <record model="hr.applicant.country" id="country_St_Vincent_Grenadines">
+            <field name="name">St Vincent &amp; Grenadines</field>
+            <field name="sequence">190</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Saipan">
+            <field name="name">Saipan</field>
+            <field name="sequence">191</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Samoa">
+            <field name="name">Samoa</field>
+            <field name="sequence">192</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Samoa_American">
+            <field name="name">Samoa American</field>
+            <field name="sequence">193</field>
+        </record>
+        <record model="hr.applicant.country" id="country_San_Marino">
+            <field name="name">San Marino</field>
+            <field name="sequence">194</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Sao_Tome_Principe">
+            <field name="name">Sao Tome &amp; Principe</field>
+            <field name="sequence">195</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Saudi_Arabia">
+            <field name="name">Saudi Arabia</field>
+            <field name="sequence">196</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Senegal">
+            <field name="name">Senegal</field>
+            <field name="sequence">197</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Serbia">
+            <field name="name">Serbia</field>
+            <field name="sequence">198</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Seychelles">
+            <field name="name">Seychelles</field>
+            <field name="sequence">199</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Sierra_Leone">
+            <field name="name">Sierra Leone</field>
+            <field name="sequence">200</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Singapore">
+            <field name="name">Singapore</field>
+            <field name="sequence">201</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Slovakia">
+            <field name="name">Slovakia</field>
+            <field name="sequence">202</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Slovenia">
+            <field name="name">Slovenia</field>
+            <field name="sequence">203</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Solomon_Islands">
+            <field name="name">Solomon Islands</field>
+            <field name="sequence">204</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Somalia">
+            <field name="name">Somalia</field>
+            <field name="sequence">205</field>
+        </record>
+        <record model="hr.applicant.country" id="country_South_Africa">
+            <field name="name">South Africa</field>
+            <field name="sequence">206</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Spain">
+            <field name="name">Spain</field>
+            <field name="sequence">207</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Sri_Lanka">
+            <field name="name">Sri Lanka</field>
+            <field name="sequence">208</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Sudan">
+            <field name="name">Sudan</field>
+            <field name="sequence">209</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Suriname">
+            <field name="name">Suriname</field>
+            <field name="sequence">210</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Swaziland">
+            <field name="name">Swaziland</field>
+            <field name="sequence">211</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Sweden">
+            <field name="name">Sweden</field>
+            <field name="sequence">212</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Switzerland">
+            <field name="name">Switzerland</field>
+            <field name="sequence">213</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Syria">
+            <field name="name">Syria</field>
+            <field name="sequence">214</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Tahiti">
+            <field name="name">Tahiti</field>
+            <field name="sequence">215</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Taiwan">
+            <field name="name">Taiwan</field>
+            <field name="sequence">216</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Tajikistan">
+            <field name="name">Tajikistan</field>
+            <field name="sequence">217</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Tanzania">
+            <field name="name">Tanzania</field>
+            <field name="sequence">218</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Thailand">
+            <field name="name">Thailand</field>
+            <field name="sequence">219</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Togo">
+            <field name="name">Togo</field>
+            <field name="sequence">220</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Tokelau">
+            <field name="name">Tokelau</field>
+            <field name="sequence">221</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Tonga">
+            <field name="name">Tonga</field>
+            <field name="sequence">222</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Trinidad_Tobago">
+            <field name="name">Trinidad &amp; Tobago</field>
+            <field name="sequence">223</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Tunisia">
+            <field name="name">Tunisia</field>
+            <field name="sequence">224</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Turkey">
+            <field name="name">Turkey</field>
+            <field name="sequence">225</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Turkmenistan">
+            <field name="name">Turkmenistan</field>
+            <field name="sequence">226</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Turks_Caicos_Is">
+            <field name="name">Turks &amp; Caicos Is</field>
+            <field name="sequence">227</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Tuvalu">
+            <field name="name">Tuvalu</field>
+            <field name="sequence">228</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Uganda">
+            <field name="name">Uganda</field>
+            <field name="sequence">229</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Ukraine">
+            <field name="name">Ukraine</field>
+            <field name="sequence">230</field>
+        </record>
+        <record model="hr.applicant.country" id="country_United_Arab_Erimates">
+            <field name="name">United Arab Emirates</field>
+            <field name="sequence">231</field>
+        </record>
+        <record model="hr.applicant.country" id="country_United_Kingdom">
+            <field name="name">United Kingdom</field>
+            <field name="sequence">232</field>
+        </record>
+        <record model="hr.applicant.country" id="country_United_States_of_America">
+            <field name="name">United States of America</field>
+            <field name="sequence">233</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Uraguay">
+            <field name="name">Uruguay</field>
+            <field name="sequence">234</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Uzbekistan">
+            <field name="name">Uzbekistan</field>
+            <field name="sequence">235</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Vanuatu">
+            <field name="name">Vanuatu</field>
+            <field name="sequence">236</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Vatican_City_State">
+            <field name="name">Vatican City State</field>
+            <field name="sequence">237</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Venezuela">
+            <field name="name">Venezuela</field>
+            <field name="sequence">238</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Vietnam">
+            <field name="name">Vietnam</field>
+            <field name="sequence">239</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Virgin_Islands_(Brit)">
+            <field name="name">Virgin Islands (Brit)</field>
+            <field name="sequence">240</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Virgin_Islands_(USA)">
+            <field name="name">Virgin Islands (USA)</field>
+            <field name="sequence">241</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Wake_Island">
+            <field name="name">Wake Island</field>
+            <field name="sequence">242</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Wallis_Futana_Is">
+            <field name="name">Wallis &amp; Futana Is</field>
+            <field name="sequence">243</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Yemen">
+            <field name="name">Yemen</field>
+            <field name="sequence">244</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Zaire">
+            <field name="name">Zaire</field>
+            <field name="sequence">245</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Zambia">
+            <field name="name">Zambia</field>
+            <field name="sequence">246</field>
+        </record>
+        <record model="hr.applicant.country" id="country_Zimbabwe">
+            <field name="name">Zimbabwe</field>
+            <field name="sequence">247</field>
+        </record>
+
+
+        <!-- Applicant Categories(Tag) -->
+        <record id="tag_applicant_reserve" model="hr.applicant.category">
+            <field name="name">Reserve</field>
+        </record>
+        <record id="tag_applicant_manager" model="hr.applicant.category">
+            <field name="name">Manager</field>
+        </record>
+        <record id="tag_applicant_it" model="hr.applicant.category">
+            <field name="name">IT</field>
+        </record>
+        <record id="tag_applicant_sales" model="hr.applicant.category">
+            <field name="name">Sales</field>
+        </record>
+        <record model="utm.campaign" id="utm_campaign_job">
+            <field name="name">Job Campaign</field>
+        </record>
+
+        <record model="hr.recruitment.stage" id="stage_job1">
+            <field name="name">Initial Qualification</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job2">
+            <field name="name">First Interview</field>
+            <field name="sequence">2</field>
+            <field name="template_id" ref="email_template_data_applicant_congratulations" />
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job3">
+            <field name="name">Second Interview</field>
+            <field name="sequence">3</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job4">
+            <field name="name">Contract Proposal</field>
+            <field name="sequence">4</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job5">
+            <field name="name">Contract Signed</field>
+            <field name="sequence">5</field>
+            <field name="fold" eval="True" />
+            <field name="hired_stage">True</field>
+        </record>
+
+        <!-- applicant refuse reason -->
+        <record id="refuse_reason_1" model="hr.applicant.refuse.reason">
+            <field name="name">Doesn't fit the job requirements</field>
+            <field name="template_id" ref="email_template_data_applicant_refuse" />
+        </record>
+        <record id="refuse_reason_2" model="hr.applicant.refuse.reason">
+            <field name="name">The applicant is not interested anymore</field>
+            <field name="template_id" ref="email_template_data_applicant_not_interested" />
+        </record>
+        <record id="refuse_reason_3" model="hr.applicant.refuse.reason">
+            <field name="name">The applicant gets a better offer</field>
+            <field name="template_id" ref="email_template_data_applicant_not_interested" />
+        </record>
+
+    </data>
+</odoo>
