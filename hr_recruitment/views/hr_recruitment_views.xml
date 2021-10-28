@@ -46,7 +46,8 @@
                     <field name="salary_expected" optional="hide" />
                     <field name="salary_proposed" optional="hide" />
                     <field name="type_id" invisible="1" />
-                    <field name="availability" optional="hide" />
+                    <field name="start_period" optional="hide" />
+                    <field name="end_period" optional="hide" />
                     <field name="department_id" invisible="context.get('invisible_department', True)" readonly="1" />
                     <field name="company_id" groups="base.group_multi_company" readonly="1" optional="hide" />
                 </tree>
@@ -70,10 +71,10 @@
         </record>
 
         <record model="ir.ui.view" id="hr_applicant_view_form">
-            <field name="name">Jobs - Recruitment Form</field>
+            <field name="name">Programs - Recruitment Form</field>
             <field name="model">hr.applicant</field>
             <field name="arch" type="xml">
-                <form string="Jobs - Recruitment Form" class="o_applicant_form">
+                <form string="Programs - Recruitment Form" class="o_applicant_form">
                     <header>
                         <button string="Create Employee" name="create_employee_from_applicant" type="object" data-hotkey="v" class="oe_highlight o_create_employee" attrs="{'invisible': ['|',('emp_id', '!=', False),('active', '=', False)]}" />
                         <button string="Refuse" name="archive_applicant" type="object" attrs="{'invisible': [('active', '=', False)]}" data-hotkey="x" />
@@ -139,13 +140,12 @@
                                 <field name="partner_department" />
                                 <field name="type_id" placeholder="Degree" />
                             </group>
-                            <group string="Job">
+                            <group string="Program">
                                 <field name="job_id" />
                                 <field name="department_id" />
                                 <field name="company_id" groups="base.group_multi_company" options='{"no_open":True}' />
                             </group>
-                            <group string="Contract">
-                                <!-- <field name="hr.gross_pay" /> -->
+                            <group string="Availability Period">
                                 <!-- <label for="salary_expected" />
                                 <div class="o_row">
                                     <field name="salary_expected" />
@@ -158,7 +158,8 @@
                                     <span attrs="{'invisible':[('salary_proposed_extra','=',False)]}"> +</span>
                                     <field name="salary_proposed_extra" placeholder="Extra advantages..." />
                                 </div> -->
-                                <field name="availability" />
+                                <field name="start_period" />
+                                <field name="end_period" />
                                 <field name="emp_id" invisible="1" />
                             </group>
                         </group>
@@ -178,10 +179,10 @@
         </record>
 
         <record model="ir.ui.view" id="crm_case_pivot_view_job">
-            <field name="name">Jobs - Recruitment</field>
+            <field name="name">Programs - Recruitment</field>
             <field name="model">hr.applicant</field>
             <field name="arch" type="xml">
-                <pivot string="Job Applications" sample="1">
+                <pivot string="Program Applications" sample="1">
                     <field name="create_date" type="row" />
                     <field name="stage_id" type="col" />
                     <field name="color" invisible="1" />
@@ -190,7 +191,7 @@
         </record>
 
         <record model="ir.ui.view" id="crm_case_graph_view_job">
-            <field name="name">Jobs - Recruitment Graph</field>
+            <field name="name">Programs - Recruitment Graph</field>
             <field name="model">hr.applicant</field>
             <field name="arch" type="xml">
                 <graph string="Cases By Stage and Estimates" sample="1">
@@ -232,7 +233,7 @@
                     <separator />
                     <group expand="0" string="Group By">
                         <filter string="Responsible" name="responsible" domain="[]" context="{'group_by': 'user_id'}" />
-                        <filter string="Job" name="job" domain="[]" context="{'group_by': 'job_id'}" />
+                        <filter string="Program" name="job" domain="[]" context="{'group_by': 'job_id'}" />
                         <filter string="Degree" name="degree" domain="[]" context="{'group_by': 'type_id'}" />
                         <filter string="Stage" name="stage" domain="[]" context="{'group_by': 'stage_id'}" />
                         <filter string="Refuse Reason" name="refuse_reason_id" domain="[]" context="{'group_by': 'refuse_reason_id'}" />
@@ -342,8 +343,11 @@
                                                 </i>
                                                 <br />
                                             </t>
-                                            <div class="o_kanban_record_subtitle" invisible="context.get('search_default_job_id', False)">
+                                            <div class="o_kanban_record_subtitle">
+                                                <br />
                                                 <field name="job_id" />
+                                                <br />
+                                                <field name="partner_school" />
                                             </div>
                                         </div>
                                     </div>
@@ -428,7 +432,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="action_hr_job_sources">
-            <field name="name">Jobs Sources</field>
+            <field name="name">Programs Sources</field>
             <field name="res_model">hr.recruitment.source</field>
             <field name="view_mode">tree,kanban</field>
             <field name="search_view_id" ref="hr_recruitment_source_view_search" />
@@ -445,7 +449,7 @@
 
         <!-- Jobs -->
         <record id="view_job_filter_recruitment" model="ir.ui.view">
-            <field name="name">Job</field>
+            <field name="name">Program</field>
             <field name="model">hr.job</field>
             <field name="inherit_id" ref="hr.view_job_filter" />
             <field name="arch" type="xml">
@@ -461,7 +465,7 @@
             <field name="model">hr.job</field>
             <field name="priority">200</field>
             <field name="arch" type="xml">
-                <form string="Create a Job Position" class="o_hr_job_simple_form">
+                <form string="Create a ISAP Program" class="o_hr_job_simple_form">
                     <sheet>
                         <group>
                             <field name="name" class="o_job_name oe_inline" placeholder="e.g. Sales Manager" />
@@ -489,7 +493,7 @@
             </field>
         </record>
         <record id="create_job_simple" model="ir.actions.act_window">
-            <field name="name">Create a Job Position</field>
+            <field name="name">Create a ISAP Program</field>
             <field name="res_model">hr.job</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="hr_job_simple_form" />
@@ -519,7 +523,7 @@
                 </field>
                 <div name="button_box" position="inside">
                     <button class="oe_stat_button" icon="fa-pencil" name="%(action_hr_job_applications)d" context="{'default_user_id': user_id, 'active_test': False}" type="action">
-                        <field name="all_application_count" widget="statinfo" string="Job Applications" />
+                        <field name="all_application_count" widget="statinfo" string="Program Applications" />
                     </button>
                     <button class="oe_stat_button" icon="fa-file-text-o" name="action_get_attachment_tree_view" type="object">
                         <field name="documents_count" widget="statinfo" string="Documents" />
@@ -535,7 +539,7 @@
 
         <!-- hr related job position menu action -->
         <record model="ir.actions.act_window" id="action_hr_job_config">
-            <field name="name">Job Positions</field>
+            <field name="name">ISAP Programs</field>
             <field name="res_model">hr.job</field>
             <field name="view_mode">tree,kanban,form</field>
             <field name="view_ids" eval="[(5, 0, 0),
@@ -548,9 +552,15 @@
                 Ready to recruit more efficiently?
 </p>
                 <p>
-                Let's create a job position.
+                Let's create a ISAP program.
 </p>
             </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_my_company">
+            <field name="name">My University</field>
+            <field name="res_model">res.company</field>
+            <field name="view_mode">tree,form</field>
         </record>
 
         <!--
@@ -661,6 +671,8 @@
 
         <!-- ALL JOBS REQUESTS -->
         <menuitem parent="menu_hr_recruitment_configuration" id="menu_hr_job_position_config" action="action_hr_job_config" sequence="10" />
+
+        <menuitem parent="menu_hr_recruitment_configuration" id="menu_hr_my_company_config" action="action_hr_my_company" sequence="10" />
 
         <menuitem id="menu_hr_applicant_refuse_reason" action="hr_applicant_refuse_reason_action" parent="menu_hr_recruitment_configuration" sequence="10" />
 
@@ -800,7 +812,7 @@ action = act
 </p>
                 <p>
             Don't forget to specify the department if your recruitment process
-            is different according to the job position.
+            is different according to the ISAP program.
 </p>
             </field>
         </record>
@@ -1031,7 +1043,7 @@ action = act
                     <group expand="1" string="Group By">
                         <filter string="Responsible" name='User' context="{'group_by':'user_id'}" />
                         <filter string="Company" name="company" context="{'group_by':'company_id'}" groups="base.group_multi_company" />
-                        <filter string="Jobs" name="job" context="{'group_by':'job_id'}" />
+                        <filter string="Programs" name="job" context="{'group_by':'job_id'}" />
                         <filter string="Department" name="department" context="{'group_by':'department_id'}" />
                         <filter string="Stage" name="stage" context="{'group_by':'stage_id'}" />
                         <separator />
@@ -1101,7 +1113,7 @@ action = act
             <field name="context">{'group_by': ['create_date:month', 'user_id']}</field>
         </record>
         <record id="hr_applicant_filter_job" model="ir.filters">
-            <field name="name">By Job</field>
+            <field name="name">By Program</field>
             <field name="model_id">hr.applicant</field>
             <field name="user_id" eval="False" />
             <field name="action_id" ref="hr_applicant_action_analysis" />

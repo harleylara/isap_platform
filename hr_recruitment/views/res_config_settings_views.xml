@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//div[hasclass('settings')]" position="inside">
                     <div class="app_settings_block" data-string="Recruitment" string="Recruitment" data-key="hr_recruitment" groups="hr_recruitment.group_hr_recruitment_manager">
-                        <h2>Job Posting</h2>
+                        <h2>Program Posting</h2>
                         <div class="row mt16 o_settings_container" name="online_posting_setting_container">
                             <div class="col-12 col-lg-6 o_setting_box" id="publish_available_jobs_setting">
                                 <div class="o_setting_left_pane">
@@ -18,7 +18,7 @@
                                 <div class="o_setting_right_pane">
                                     <label for="module_website_hr_recruitment" string="Online Posting"/>
                                     <div class="text-muted">
-                                        Publish available jobs on your website
+                                        Publish available programs on your website
                                     </div>
                                 </div>
                             </div>

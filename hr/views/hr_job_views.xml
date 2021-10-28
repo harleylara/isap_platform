@@ -19,7 +19,7 @@
                             <h1><field name="name" placeholder="e.g. Sales Manager"/></h1>
                         </div>
                         <notebook>
-                            <page string="Job Description">
+                            <page string="Program Description">
                                 <div attrs="{'invisible': [('state', '!=', 'recruit')]}" name="job_description">
                                     <label for="description"/>
                                     <field name="description" options="{'collaborative': true}"/>
@@ -50,7 +50,7 @@
             <field name="name">hr.job.tree</field>
             <field name="model">hr.job</field>
             <field name="arch" type="xml">
-                <tree string="Job" sample="1">
+                <tree string="Program" sample="1">
                     <field name="sequence" widget="handle"/>
                     <field name="name"/>
                     <field name="department_id"/>
@@ -96,8 +96,8 @@
             <field name="name">hr.job.search</field>
             <field name="model">hr.job</field>
             <field name="arch" type="xml">
-                <search string="Jobs">
-                    <field name="name" string="Job Position"/>
+                <search string="Programs">
+                    <field name="name" string="Program"/>
                     <field name="department_id" operator="child_of"/>
                     <filter name="in_position" string="In Position" domain="[('state', '=', 'open')]"/>
                     <filter name="in_recruitment" string="In Recruitment" domain="[('state', '=', 'recruit')]"/>
@@ -113,7 +113,7 @@
         </record>
 
         <record id="action_hr_job" model="ir.actions.act_window">
-            <field name="name">Job Positions</field>
+            <field name="name">Programs</field>
             <field name="res_model">hr.job</field>
             <field name="view_mode">tree,form</field>
             <field name="search_view_id" ref="view_job_filter"/>
@@ -122,7 +122,7 @@
               <p class="o_view_nocontent_smiling_face">
                 Ready to recruit more efficiently?
               </p><p>
-                Let's create a job position.
+                Let's create a ISAP program.
               </p>
             </field>
         </record>

@@ -57,7 +57,7 @@ class RecruitmentStage(models.Model):
         "Sequence", default=10,
         help="Gives the sequence order when displaying a list of stages.")
     job_ids = fields.Many2many(
-        'hr.job', string='Job Specific',
+        'hr.job', string='Program Specific',
         help='Specific jobs that uses this stage. Other jobs will not use this stage.')
     requirements = fields.Text("Requirements")
     template_id = fields.Many2one(
@@ -170,8 +170,8 @@ class Applicant(models.Model):
                                    help="Salary Proposed by the Organisation", tracking=True)
     salary_expected = fields.Float(
         "Expected Salary", group_operator="avg", help="Salary Expected by Applicant", tracking=True)
-    availability = fields.Date(
-        "Availability", help="The date at which the applicant will be available to start working", tracking=True)
+    # availability = fields.Date(
+    #     "Availability", help="The date at which the applicant will be available to start working", tracking=True)
     partner_name = fields.Char("Applicant's Name")
     partner_phone = fields.Char("Phone", size=32, compute='_compute_partner_phone_email',
                                 inverse='_inverse_partner_phone', store=True)
@@ -221,6 +221,10 @@ class Applicant(models.Model):
     partner_school = fields.Char("School")
     partner_faculty = fields.Char("Faculty")
     partner_department = fields.Char("Department")
+    start_period = fields.Date(
+        "Start period", help="The date at which the applicant will be available to start working", tracking=True)
+    end_period = fields.Date(
+        "End period", help="The date at which the applicant will be available to end working", tracking=True)
 
     @api.depends('date_open', 'date_closed')
     def _compute_day(self):

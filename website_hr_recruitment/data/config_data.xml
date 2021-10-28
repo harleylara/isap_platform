@@ -32,6 +32,8 @@
                 'partner_department',
                 'type_id',
                 'type_id_country',
+                'start_period',
+                'end_period',
                 'job_id',
                 'department_id',
             ]" />

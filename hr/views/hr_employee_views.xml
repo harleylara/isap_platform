@@ -24,7 +24,7 @@
                     <group expand="0" string="Group By">
                         <filter name="group_manager" string="Manager" domain="[]" context="{'group_by': 'parent_id'}"/>
                         <filter name="group_department" string="Department" domain="[]" context="{'group_by': 'department_id'}"/>
-                        <filter name="group_job" string="Job" domain="[]" context="{'group_by': 'job_id'}"/>
+                        <filter name="group_job" string="Program" domain="[]" context="{'group_by': 'job_id'}"/>
                     </group>
                     <searchpanel>
                         <field name="company_id" groups="base.group_multi_company" icon="fa-building" enable_counters="1"/>
@@ -82,7 +82,7 @@
                                 <a title="Chat" icon="fa-comments" href="#" class="ml8 o_employee_chat_btn" invisible="not context.get('chat_icon')" attrs="{'invisible': [('user_id','=', False)]}" role="button"><i class="fa fa-comments"/></a>
                             </h1>
                             <h2>
-                                <field name="job_title" placeholder="Job Position" />
+                                <field name="job_title" placeholder="ISAP Program" />
                             </h2>
                             <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags"  groups="hr.group_hr_manager"/>
                         </div>
@@ -358,7 +358,7 @@
              </p><p>
                With just a quick glance on the Odoo employee screen, you
                can easily find all the information you need for each person;
-               contact data, job position, availability, etc.
+               contact data, ISAP program, availability, etc.
              </p>
             </field>
         </record>
@@ -414,7 +414,7 @@
               </p><p>
                 With just a quick glance on the Odoo employee screen, you
                 can easily find all the information you need for each person;
-                contact data, job position, availability, etc.
+                contact data, ISAP program, availability, etc.
               </p>
             </field>
         </record>

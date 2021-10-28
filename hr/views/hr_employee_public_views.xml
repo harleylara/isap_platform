@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <search string="Employees">
                     <field name="name" string="Employees" filter_domain="['|',('work_email','ilike',self),('name','ilike',self)]"/>
-                    <field name="job_title" string="Job Title"/>
+                    <field name="job_title" string="Program Title"/>
                     <field name="department_id" string="Department"/>
                     <field name="company_id" string="Company"/>
                     <separator/>
@@ -49,7 +49,7 @@
                                     <a title="Chat" icon="fa-comments" href="#" class="ml8 o_employee_chat_btn" invisible="not context.get('chat_icon')" attrs="{'invisible': [('user_id','=', False)]}" role="button"><i class="fa fa-comments"/></a>
                                 </h1>
                                 <h2>
-                                    <field name="job_title" placeholder="Job Title" />
+                                    <field name="job_title" placeholder="Program Title" />
                                 </h2>
                             </div>
                             <group>
@@ -200,7 +200,7 @@
               </p><p>
                 With just a quick glance on the Odoo employee screen, you
                 can easily find all the information you need for each person;
-                contact data, job position, availability, etc.
+                contact data, ISAP program, availability, etc.
               </p>
             </field>
         </record>

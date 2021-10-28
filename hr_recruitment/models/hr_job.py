@@ -18,10 +18,10 @@ class Job(models.Model):
         return [(6, 0, [self.env.uid])]
 
     address_id = fields.Many2one(
-        'res.partner', "Job Location", default=_default_address_id,
+        'res.partner', "Program Location", default=_default_address_id,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
         help="Address where employees are working")
-    application_ids = fields.One2many('hr.applicant', 'job_id', "Job Applications")
+    application_ids = fields.One2many('hr.applicant', 'job_id', "Program Applications")
     application_count = fields.Integer(compute='_compute_application_count', string="Application Count")
     all_application_count = fields.Integer(compute='_compute_all_application_count', string="All Application Count")
     new_application_count = fields.Integer(

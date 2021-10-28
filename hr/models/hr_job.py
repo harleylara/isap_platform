@@ -7,11 +7,11 @@ from odoo import api, fields, models, _
 class Job(models.Model):
 
     _name = "hr.job"
-    _description = "Job Position"
+    _description = "ISAP Program"
     _inherit = ['mail.thread']
     _order = 'sequence'
 
-    name = fields.Char(string='Job Position', required=True,
+    name = fields.Char(string='Program Name', required=True,
                        index=True, translate=True)
     sequence = fields.Integer(default=10)
     expected_employees = fields.Integer(compute='_compute_employees', string='Total Forecasted Employees', store=True,
@@ -24,7 +24,7 @@ class Job(models.Model):
                                           help='Number of hired employees for this job position during recruitment phase.')
     employee_ids = fields.One2many(
         'hr.employee', 'job_id', string='Employees', groups='base.group_user')
-    description = fields.Html(string='Job Description')
+    description = fields.Html(string='Program Description')
     requirements = fields.Text('Requirements')
     department_id = fields.Many2one('hr.department', string='Department',
                                     domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]")
