@@ -1,0 +1,16 @@
+@startuml "ISAP UML Sequence Diagram"
+actor "Admin of system"
+actor "Admin of university"
+actor Professor
+actor Student
+
+"Admin of university" -> "Admin of system" : Request of creating AdminUniversity account
+"Admin of system" -> "Admin of university" : Create AdminUniversity account
+"Admin of university" -> Professor : Create UnviersityProfessor account
+Professor -> Student: Create and Publish Program
+Student -> Professor: Apply for Program
+Professor <-> Student: Appointment of Interview
+Professor <-> Student: Doing Interview
+Professor -> Student: Telling Result
+
+@enduml

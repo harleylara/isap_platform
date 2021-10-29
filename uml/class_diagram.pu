@@ -1,0 +1,89 @@
+@startuml "ISAP UML Class Diagram"
+allow_mixing
+
+class User << (C,orchid) >>{
+	-user_id: char
+	-name: char
+	-email: char
+}
+
+class AdminSystem << (C,orchid) >>{
+	+create_admin_university()
+}
+
+class AdminUniversity << (C,orchid) >>{
+	+create_university_professor()
+	+create_university()
+}
+
+class UniversityProfessor << (C,orchid) >>{
+	-phone:
+	-mobile:
+	-university_id:
+	+create_program()
+	+change_application_state()
+}
+
+class "Student" << (C,orchid) >>{
+	-application_ids:
+	+create_application()
+}
+
+class "Application"{
+	-application_id:
+	-student_id
+	-phone:
+	-mobile:
+	-date_of_birth:
+	-address:
+	-nationality:
+	-school_name:
+	-faculty:
+	-department:
+	-degree:
+	-start_available:
+	-end_available:
+	-attachment_files:
+	-state:
+}
+
+class "Program"{
+	-program_id:
+	-name:
+	-field_of_study:
+	-description:
+	-university_id:
+	-gross_pay:
+	-application_ids:
+	-university_professor_id:
+	-start_period:
+	-end_period:
+	-attachment_files:
+}
+
+class "University"{
+	university_id:
+	name:
+	address:
+	currency:
+	website:
+	phone:
+	email:
+	program_ids:
+}
+
+User <|-- AdminSystem
+User <|-- AdminUniversity
+User <|-- UniversityProfessor
+User <|-- Student
+
+Student "1" *-- "0..*" Application
+UniversityProfessor "1" *-- "0..*" Program
+AdminUniversity "1" *-- "1" University
+AdminUniversity "1" *- "0..*" UniversityProfessor
+University "1" *- "0.." UniversityProfessor
+
+Program "1" *- "0..*" Application
+University "1" *- "0..*" Program
+
+@enduml

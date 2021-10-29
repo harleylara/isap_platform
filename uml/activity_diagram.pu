@@ -1,0 +1,17 @@
+@startuml "ISAP UML Activity Diagram"
+
+(*) --> "Applied"
+
+if "Document Screening" then
+	->[ok] "Before Interview"
+else
+	-->[no] "Refused"
+	"Before Interview" -> "After Interview"
+	if "Final Screening" then
+		->[ok] "Successful Application"
+	else
+		-->[no] "Refused"
+
+"Successful Application" --> (*)
+
+@enduml

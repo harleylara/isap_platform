@@ -1,0 +1,80 @@
+@startuml sample
+
+class User{
+	-userId: string
+	-password: string
+	-loginStatus: string
+	-registarDate: date
+	+verifyLogin(): bool
+}
+
+class Customer{
+	-customerName:string
+	-address:string
+	-email: string
+	-creditCardInfo: string
+	-shippingInfo: string
+	-accountBalance: float
+	+register()
+	+login()
+	+updateProfile
+}
+
+class Administrator{
+	-adminName: string
+	-email: string
+	+updateCatalog(): bool
+}
+
+class ShoppingCart{
+	-cartId: int
+	-productId: int
+	-quantity: int
+	-dateAdded: int
+	+addCartItem()
+	+updateQuantity()
+	+viewCartDetails()
+	+checkOut()
+}
+
+class Order{
+	-orderId: int
+	-dateCreated: string
+	-dateShipped: string
+	-customerName: string
+	-customerId: string
+	-status: string
+	-shippingId: string
+	+placeOrder()
+}
+
+class ShippingInfo{
+	-shippingId: int
+	-shippingType: string
+	-shippingCost: int
+	-shippingRegionId: int
+	+updateShippingInfo()
+}
+
+class OrderDetails{
+	-orderId: int
+	-productId: int
+	-productName: string
+	-quantity: int
+	-unitCost: float
+	-subtotal: float
+	+clacPrice
+}
+
+
+User <|-- Customer
+User <|-- Administrator
+
+Customer "1" *-- "0..*" ShoppingCart
+Customer "1" *-- "0..*" Order
+
+Order "1" *-- "1" ShippingInfo
+Order "1" *-- "1" OrderDetails: "has a"
+
+
+@enduml
