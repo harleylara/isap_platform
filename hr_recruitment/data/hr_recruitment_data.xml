@@ -1034,25 +1034,21 @@
         </record>
 
         <record model="hr.recruitment.stage" id="stage_job1">
-            <field name="name">Initial Qualification</field>
+            <field name="name">Applied</field>
             <field name="sequence">1</field>
         </record>
         <record model="hr.recruitment.stage" id="stage_job2">
-            <field name="name">First Interview</field>
+            <field name="name">Before Interview</field>
             <field name="sequence">2</field>
             <field name="template_id" ref="email_template_data_applicant_congratulations" />
         </record>
         <record model="hr.recruitment.stage" id="stage_job3">
-            <field name="name">Second Interview</field>
+            <field name="name">After Interview</field>
             <field name="sequence">3</field>
         </record>
         <record model="hr.recruitment.stage" id="stage_job4">
-            <field name="name">Contract Proposal</field>
+            <field name="name">Successful Application</field>
             <field name="sequence">4</field>
-        </record>
-        <record model="hr.recruitment.stage" id="stage_job5">
-            <field name="name">Contract Signed</field>
-            <field name="sequence">5</field>
             <field name="fold" eval="True" />
             <field name="hired_stage">True</field>
         </record>

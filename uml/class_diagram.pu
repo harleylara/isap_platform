@@ -81,7 +81,7 @@ Student "1" *-- "0..*" Application
 UniversityProfessor "1" *-- "0..*" Program
 AdminUniversity "1" *-- "1" University
 AdminUniversity "1" *- "0..*" UniversityProfessor
-University "1" *- "0.." UniversityProfessor
+University "1" *- "0..*" UniversityProfessor
 
 Program "1" *- "0..*" Application
 University "1" *- "0..*" Program

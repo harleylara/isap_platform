@@ -2,28 +2,81 @@
 <odoo>
     <data noupdate="1">
 
-        <record id="dep_administration" model="hr.department">
-          <field name="name">Administration</field>
+        <record id="dep_accounting" model="hr.department">
+            <field name="name">Accounting</field>
         </record>
 
-        <record id="dep_sales" model="hr.department">
-          <field name="name">Sales</field>
+        <record id="dep_administration" model="hr.department">
+            <field name="name">Administration</field>
         </record>
+
+        <record id="dep_anthropology" model="hr.department">
+            <field name="name">Anthropology</field>
+        </record>
+
+        <record id="dep_art" model="hr.department">
+            <field name="name">Art</field>
+        </record>
+
+        <record id="dep_biochemistry" model="hr.department">
+            <field name="name">Biochemistry</field>
+        </record>
+
+        <record id="dep_biology" model="hr.department">
+            <field name="name">Biology</field>
+        </record>
+
+        <record id="dep_chemistry" model="hr.department">
+            <field name="name">Chemistry</field>
+        </record>
+
+        <record id="dep_communication" model="hr.department">
+            <field name="name">Communication</field>
+        </record>
+
+        <record id="dep_computer_science" model="hr.department">
+            <field name="name">Computer science</field>
+        </record>
+
+        <record id="dep_dance" model="hr.department">
+            <field name="name">Dance</field>
+        </record>
+
+        <record id="dep_economics" model="hr.department">
+            <field name="name">Ecoomics</field>
+        </record>
+
+        <record id="dep_" model="hr.department">
+            <field name="name"></field>
+        </record>
+
+        <record id="dep_electrical_engineering" model="hr.department">
+            <field name="name">Electrical engineering</field>
+        </record>
+
+        <record id="dep_english" model="hr.department">
+            <field name="name">English</field>
+        </record>
+
+        <record id="dep_other" model="hr.department">
+            <field name="name">Other</field>
+        </record>
+
 
         <record id="res_partner_admin_private_address" model="res.partner">
             <field name="name">Administrator</field>
-            <field name="company_id" ref="base.main_company"/>
+            <field name="company_id" ref="base.main_company" />
             <field name="email">admin@example.com</field>
             <field name="type">private</field>
         </record>
 
         <record id="employee_admin" model="hr.employee">
-            <field name="name" eval="obj(ref('base.partner_admin')).name" model="res.partner"/>
-            <field name="department_id" ref="dep_administration"/>
-            <field name="user_id" ref="base.user_admin"/>
-            <field name="address_id" ref="base.main_company"/>
-            <field name="address_home_id" ref="res_partner_admin_private_address"/>
-            <field name="image_1920" eval="obj(ref('base.partner_admin')).image_1920" model="res.partner"/>
+            <field name="name" eval="obj(ref('base.partner_admin')).name" model="res.partner" />
+            <field name="department_id" ref="dep_administration" />
+            <field name="user_id" ref="base.user_admin" />
+            <field name="address_id" ref="base.main_company" />
+            <field name="address_home_id" ref="res_partner_admin_private_address" />
+            <field name="image_1920" eval="obj(ref('base.partner_admin')).image_1920" model="res.partner" />
         </record>
 
         <record id="onboarding_setup_it_materials" model="hr.plan.activity.type">
@@ -57,7 +110,7 @@
                 ref('hr.onboarding_setup_it_materials'),
                 ref('hr.onboarding_plan_training'),
                 ref('hr.onboarding_training'),
-                ])]"/>
+                ])]" />
         </record>
 
         <record id="offboarding_plan" model='hr.plan'>
@@ -65,7 +118,7 @@
             <field name="plan_activity_type_ids" eval="[(6, 0, [
                 ref('hr.offboarding_setup_compute_out_delais'),
                 ref('hr.offboarding_take_back_hr_materials'),
-                ])]"/>
+                ])]" />
         </record>
 
         <record model="ir.config_parameter" id="hr_presence_control_login" forcecreate="False">
@@ -92,13 +145,43 @@
         <!-- Work permit expires Soon -->
         <record id="ir_cron_data_check_work_permit_validity" model="ir.cron">
             <field name="name">HR Employee: check work permit validity</field>
-            <field name="model_id" ref="model_hr_employee"/>
+            <field name="model_id" ref="model_hr_employee" />
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
             <field name="code">model._cron_check_work_permit_validity()</field>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
+        </record>
+
+        <record model="hr.attachment" id="attachment_cv">
+            <field name="name">CV</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record model="hr.attachment" id="attachment_transcripts">
+            <field name="name">Transcripts</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <record model="hr.attachment" id="attachment_letter_of_motivation">
+            <field name="name">Letter of motivation</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record model="hr.attachment" id="attachment_certificate_of_language">
+            <field name="name">Certificate of language</field>
+            <field name="sequence">4</field>
+        </record>
+
+        <record model="hr.attachment" id="attachment_certificate_of_enrollment">
+            <field name="name">Certificate of enrollment</field>
+            <field name="sequence">5</field>
+        </record>
+
+        <record model="hr.attachment" id="attachment_copy_of_passport">
+            <field name="name">Copy of Passport</field>
+            <field name="sequence">6</field>
         </record>
 
     </data>

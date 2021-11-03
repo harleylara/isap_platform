@@ -665,7 +665,7 @@
             <field name="act_window_id" ref="crm_case_categ0_act_job" />
         </record>
 
-        <menuitem name="ISAP Recruitment" id="menu_hr_recruitment_root" web_icon="hr_recruitment,static/description/icon.png" groups="hr_recruitment.group_hr_recruitment_user" sequence="210" />
+        <menuitem name="ISAP Recruitment" id="menu_hr_recruitment_root" web_icon="hr_recruitment,static/description/icon.png" groups="hr_recruitment.group_hr_recruitment_user,hr_recruitment.group_hr_recruitment_professor" sequence="210" />
 
         <menuitem id="menu_hr_recruitment_configuration" name="Configuration" parent="menu_hr_recruitment_root" sequence="100" />
 

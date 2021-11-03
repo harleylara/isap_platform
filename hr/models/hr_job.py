@@ -4,6 +4,19 @@
 from odoo import api, fields, models, _
 
 
+class AttachmentFiles(models.Model):
+    _name = "hr.attachment"
+    _description = "Types of attached documents"
+    _sql_constraints = [
+        ('name_uniq', 'unique (name)',
+         'The name of the Degree of Recruitment must be unique!')
+    ]
+
+    name = fields.Char("Type of file", required=True, translate=True)
+    sequence = fields.Integer(
+        "Sequence", default=1)
+
+
 class Job(models.Model):
 
     _name = "hr.job"
@@ -28,13 +41,15 @@ class Job(models.Model):
     requirements = fields.Text('Requirements')
     department_id = fields.Many2one('hr.department', string='Department',
                                     domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]")
-    gross_pay = fields.Integer(string="Gross pay per month")
+    gross_pay = fields.Char(string="Gross pay per month")
     company_id = fields.Many2one(
         'res.company', string='Company', default=lambda self: self.env.company)
     state = fields.Selection([
         ('recruit', 'Recruitment in Progress'),
         ('open', 'Not Recruiting')
     ], string='Status', readonly=True, required=True, tracking=True, copy=False, default='recruit', help="Set whether the recruitment process is open or closed for this job position.")
+    attachment_ids = fields.Many2many(
+        'hr.attachment', string="Required attachment files")
 
     _sql_constraints = [
         ('name_company_uniq', 'unique(name, company_id, department_id)',
