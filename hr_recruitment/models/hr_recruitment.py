@@ -225,6 +225,7 @@ class Applicant(models.Model):
         "Start period", help="The date at which the applicant will be available to start working", tracking=True)
     end_period = fields.Date(
         "End period", help="The date at which the applicant will be available to end working", tracking=True)
+    student_id = fields.Many2one('res.users',string='Application Id')
 
     @api.depends('date_open', 'date_closed')
     def _compute_day(self):

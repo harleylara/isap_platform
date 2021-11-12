@@ -23,16 +23,24 @@ class WebsiteHrRecruitment(http.Controller):
         '/jobs/country/<model("res.country"):country>/department/<model("hr.department"):department>/office/<int:office_id>',
     ], type='http', auth="public", website=True, sitemap=sitemap_jobs)
     def jobs(self, country=None, department=None, office_id=None, **kwargs):
-        env = request.env(context=dict(request.env.context, show_address=True, no_tag_br=True))
+        env = request.env(context=dict(request.env.context,
+                                       show_address=True, no_tag_br=True))
 
         Country = env['res.country']
         Jobs = env['hr.job']
+        Applicants = env['hr.applicant']
 
         # List jobs available to current UID
-        domain = request.website.website_domain()
-        job_ids = Jobs.search(domain, order="is_published desc, sequence, no_of_recruitment desc").ids
+        # domain = request.website.website_domain()
+        # Search jobs as superuser to get all company's job
+        job_ids = Jobs.sudo().search(
+            [('is_published', '=', True)], order="is_published desc, sequence, no_of_recruitment desc").ids
         # Browse jobs as superuser, because address is restricted
         jobs = Jobs.sudo().browse(job_ids)
+
+        # Search applicant as superuser, because address is restricted
+        applicants = Applicants.sudo().search(
+            [('student_id.id', '=', request.env.user.id)])
 
         # Default search by user country
         if not (country or department or office_id or kwargs.get('all_countries')):
@@ -45,8 +53,10 @@ class WebsiteHrRecruitment(http.Controller):
 
         # Filter job / office for country
         if country and not kwargs.get('all_countries'):
-            jobs = [j for j in jobs if j.address_id is None or j.address_id.country_id and j.address_id.country_id.id == country.id]
-            offices = set(j.address_id for j in jobs if j.address_id is None or j.address_id.country_id and j.address_id.country_id.id == country.id)
+            jobs = [
+                j for j in jobs if j.address_id is None or j.address_id.country_id and j.address_id.country_id.id == country.id]
+            offices = set(
+                j.address_id for j in jobs if j.address_id is None or j.address_id.country_id and j.address_id.country_id.id == country.id)
         else:
             offices = set(j.address_id for j in jobs if j.address_id)
 
@@ -55,7 +65,8 @@ class WebsiteHrRecruitment(http.Controller):
         countries = set(o.country_id for o in offices if o.country_id)
 
         if department:
-            jobs = [j for j in jobs if j.department_id and j.department_id.id == department.id]
+            jobs = [
+                j for j in jobs if j.department_id and j.department_id.id == department.id]
         if office_id and office_id in [x.id for x in offices]:
             jobs = [j for j in jobs if j.address_id and j.address_id.id == office_id]
         else:
@@ -70,6 +81,7 @@ class WebsiteHrRecruitment(http.Controller):
             'country_id': country,
             'department_id': department,
             'office_id': office_id,
+            'applicants': applicants,
         })
 
     @http.route('/jobs/add', type='http', auth="user", website=True)
@@ -82,6 +94,9 @@ class WebsiteHrRecruitment(http.Controller):
 
     @http.route('''/jobs/detail/<model("hr.job"):job>''', type='http', auth="public", website=True, sitemap=True)
     def jobs_detail(self, job, **kwargs):
+        print('\n\n')
+        print(job.id)
+        print('\n\n')
         return request.render("website_hr_recruitment.detail", {
             'job': job,
             'main_object': job,

@@ -29,7 +29,6 @@ class Applicant(models.Model):
 
     _inherit = 'hr.applicant'
 
-    student_id = fields.Char("Student uid")
 
     def website_form_input_filter(self, request, values):
         current_uid = self._uid
@@ -81,3 +80,50 @@ class Job(models.Model):
 
     def get_backend_menu_id(self):
         return self.env.ref('hr_recruitment.menu_hr_recruitment_root').id
+
+
+# class Students(models.Model):
+#     _name = 'hr.students'
+#     _inherit = 'res.users'
+#     _description = "The model of students (applicant for ISAP programs)"
+
+#     groups_id = fields.Many2many(
+#         'res.groups', 'res_groups_hr_students_rel', 'uid', 'gid', string='Groups')
+#     company_ids = fields.Many2many(
+#         'res.company', 'res_company_hr_student_rel', 'user_id', 'cid', string='Companies')
+
+#     # application_ids = fields.Many2many(
+#     #     'hr.applicant',
+#     #     'hr_applicant_hr_students_rel',
+#     #     'id',
+#     #     'id',
+#     #     string='Application Ids')
+
+#     def init(self):
+#         cr = self.env.cr
+#         student_ids = []
+
+#         cr.execute("""
+#         SELECT id FROM res_groups
+#         WHERE name='Portal'
+#         """)
+
+#         portal_id = cr.fetchone()[0]
+#         print("portal id: " + str(portal_id))
+
+#         cr.execute("""
+#         SELECT uid FROM res_groups_users_rel
+#         WHERE gid=%s
+#         """, [portal_id])
+
+#         if self.env.cr.rowcount:
+#             for uid in cr.fetchall():
+#                 student_ids.append(uid[0])
+#         print("student_ids: "+str(student_ids))
+
+#         for student_id in student_ids:
+#             cr.execute("""
+#             SELECT id FROM hr_applicant
+#             WHERE student_id=%s
+#             """, [student_id])
+#             print(str(student_id) + ": " + str(cr.fetchall()))

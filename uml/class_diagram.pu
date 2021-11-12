@@ -17,15 +17,11 @@ class AdminUniversity << (C,orchid) >>{
 }
 
 class UniversityProfessor << (C,orchid) >>{
-	-phone:
-	-mobile:
-	-university_id:
 	+create_program()
 	+change_application_state()
 }
 
 class "Student" << (C,orchid) >>{
-	-application_ids:
 	+create_application()
 }
 
