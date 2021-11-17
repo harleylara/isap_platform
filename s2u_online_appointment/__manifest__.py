@@ -2,7 +2,7 @@
 
 {
     'name': 'Online appointment',
-    'version': '15.0.1',
+    'version': '1.1',
     'author': 'Solutions2use',
     'price': 0.0,
     'currency': 'EUR',
@@ -42,8 +42,11 @@
         'views/appointment_slot_view.xml',
         'views/appointment_option_view.xml',
     ],
-    'qweb': [
-    ],
+    'assets':{
+        'web.assets_frontend':[
+            's2u_online_appointment/static/src/js/main.js'
+        ],
+    },
     'installable': True,
     'auto_install': False,
 }

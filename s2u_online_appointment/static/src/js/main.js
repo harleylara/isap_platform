@@ -1,12 +1,17 @@
 odoo.define('s2u_online_appoinment.main', function (require) {
     'use strict';
 
+
+    // inmport other javascript module
     var core = require('web.core');
     var publicWidget = require('web.public.widget');
     var _t = core._t;
 
+
     publicWidget.registry.OnlineAppointment = publicWidget.Widget.extend({
+        // select module
         selector: '#s2u_online_appointment',
+        // constructor
         init: function () {
             this._super.apply(this, arguments);
 
@@ -17,12 +22,14 @@ odoo.define('s2u_online_appoinment.main', function (require) {
         start: function () {
             var self = this;
 
+            // the setting of calendar
             $('.datepicker').datepicker({
                 dateFormat: 'dd/mm/yy',
                 startDate: '-3d',
                 beforeShowDay: function(date) {
                     var d = self._format_date(date);
-                    var key = date.getFullYear().toString() + ','+ (date.getMonth() + 1).toString();
+                    var key = date.getFullYear().toString() + ',' + (date.getMonth() + 1).toString();
+                    // if available, change the color of calendar
                     if (self.days_with_free_slots[key] && self.days_with_free_slots[key][d]) {
                         return [true, 'color_green', ''];
                     } else {
@@ -51,10 +58,12 @@ odoo.define('s2u_online_appoinment.main', function (require) {
             self._update_timeslot();
         },
 
+        // format the date to "yyyy-mm-dd"
         _format_date: function (date) {
             var self = this;
 
             var d = new Date(date),
+                // getMonth return value between 0 and 11
                 month = '' + (d.getMonth() + 1),
                 day = '' + d.getDate(),
                 year = d.getFullYear();
@@ -66,6 +75,7 @@ odoo.define('s2u_online_appoinment.main', function (require) {
 
             return [year, month, day].join('-');
         },
+
 
         _update_timeslot: function () {
             var self = this;
