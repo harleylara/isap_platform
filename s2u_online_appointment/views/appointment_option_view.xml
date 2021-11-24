@@ -5,7 +5,7 @@
             <field name="model">s2u.appointment.option</field>
             <field name="arch" type="xml">
                 <search>
-                       <field name="name"/>
+                    <field name="name" />
                 </search>
             </field>
         </record>
@@ -17,14 +17,14 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
+                                <field name="name" />
                                 <field name="duration" widget="float_time" />
+                                <field name="time_zone" />
                             </group>
                             <group>
-                                <field name="user_specific"/>
-                                <field name="users_allowed"
-                                       widget="many2many_tags"
-                                       attrs="{'required': [('user_specific', '==', True)], 'invisible': [('user_specific', '!=', True)]}"/>
+                                <field name="application_id" />
+                                <field name="user_specific" />
+                                <field name="users_allowed" widget="many2many_tags" attrs="{'required': [('user_specific', '==', True)], 'invisible': [('user_specific', '!=', True)]}" />
                             </group>
                         </group>
                     </sheet>
@@ -36,8 +36,10 @@
             <field name="model">s2u.appointment.option</field>
             <field name="arch" type="xml">
                 <tree string="Appointment options">
-                    <field name="name"/>
-                    <field name="duration" widget="float_time"/>
+                    <field name="name" />
+                    <field name="duration" widget="float_time" />
+                    <field name="time_zone" />
+                    <field name="application_id" />
                 </tree>
             </field>
         </record>
@@ -48,8 +50,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="Appointment Options" id="menu_appointment_option"
-                  parent="menu_appointment" groups="website.group_website_designer" action="appointment_option_action" sequence="20"/>
+        <menuitem name="Appointment Options" id="menu_appointment_option" parent="menu_appointment" groups="website.group_website_designer,hr_recruitment.group_hr_recruitment_professor" action="appointment_option_action" sequence=" 20" />
 
     </data>
 </odoo>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <menuitem id="menu_appointment" name="Appointment" sequence="100" />
+        <menuitem id="menu_appointment" name="Appointment" sequence="100" parent="hr_recruitment.menu_hr_recruitment_root" />
     </data>
 </odoo>

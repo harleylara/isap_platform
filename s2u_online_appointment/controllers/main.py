@@ -9,6 +9,12 @@ from odoo import http, modules, tools
 from odoo import api, fields, models, _, SUPERUSER_ID
 from odoo.http import request
 import logging
+# to make url of zoom
+import jwt
+import requests
+import json
+from time import time
+from .config import ZOOM
 
 _logger = logging.getLogger(__name__)
 
@@ -61,7 +67,7 @@ class OnlineAppointment(http.Controller):
 
     def select_options(self, criteria='default'):
 
-        return request.env['s2u.appointment.option'].sudo().search([])
+        return request.env['s2u.appointment.option'].sudo().search([('application_id.student_id.id','=',request.env.user.id)])
 
     def prepare_values(self, form_data=False, default_appointee_id=False, criteria='default'):
 
@@ -150,6 +156,62 @@ class OnlineAppointment(http.Controller):
             if options:
                 values['appointment_option_id'] = options[0].id
         return values
+
+    # to make url of zoom
+    def generateToken(self):
+        token = jwt.encode(
+            # Create a payload of the token containing
+            # API Key & expiration time
+            {'iss': ZOOM().API_KEY, 'exp': time()+5000},
+            # Secret used to generate token signature
+            ZOOM().API_SECRET,
+            # Specify the hasing alg
+            algorithm='HS256'
+        )
+        return token
+
+    def generateJsonRequest(self, title, time, duration, timezone):
+        meeting_details = {
+            "topic": title,
+            "type": 2,
+            "start_time": time,
+            "duration": duration,
+            "timezone": timezone,
+            "agenda": "test",
+            "recurrence": {
+                "type": 1,
+                "repeat_interval": 1
+            },
+            "settings": {
+                "host_video": "true",
+                "participant_video": "true",
+                "join_before_host": "False",
+                "mute_upon_entry": "False",
+                "watermark": "true",
+                "audio": "voip",
+                "auto_recording": "cloud",
+            }
+        }
+        return meeting_details
+
+    # send a request with headers including
+    # a token and meeting details
+
+    def createMeeting(self, title, time, duration, timezone):
+        headers = {'authorization': 'Bearer %s' % self.generateToken(),
+                   'content-type': 'application/json'}
+        r = requests.post(
+            f'https://api.zoom.us/v2/users/me/meetings',
+            headers=headers, data=json.dumps(self.generateJsonRequest(title, time, duration, timezone)))
+
+        print("\n creating zoom meeting ... \n")
+        # print(r.text)
+        # converting the output into json and extracting the details
+        y = json.loads(r.text)
+        join_URL = y["join_url"]
+        meetingPassword = y["password"]
+
+        return join_URL, meetingPassword
 
     @http.route(['/online-appointment'], auth='public', website=True, csrf=True)
     def online_appointment(self, **kw):
@@ -247,6 +309,10 @@ class OnlineAppointment(http.Controller):
             partner_ids = [self.appointee_id_to_partner_id(appointee_id),
                            request.env.user.partner_id.id]
 
+        print(start_datetime.strftime("%Y-%m-%dT%H: %M: %SZ"))
+        url, password = self.createMeeting(
+            option.name, start_datetime.strftime("%Y-%m-%dT%H: %M: %SZ"), str(int(round(option.duration * 60))), pytz.all_timezones[int(option.time_zone)])
+
         # set detaching = True, we do not want to send a mail to the attendees
         appointment = request.env['calendar.event'].sudo().with_context(detaching=True).create({
             'name': option.name,
@@ -254,7 +320,8 @@ class OnlineAppointment(http.Controller):
             'start': start_datetime.strftime("%Y-%m-%d %H:%M:%S"),
             'stop': (start_datetime + datetime.timedelta(minutes=round(option.duration * 60))).strftime("%Y-%m-%d %H:%M:%S"),
             'duration': option.duration,
-            'partner_ids': [(6, 0, partner_ids)]
+            'partner_ids': [(6, 0, partner_ids)],
+            'videocall_location': url,
         })
         # set all attendees on 'accepted'
         appointment.attendee_ids.write({
@@ -266,7 +333,9 @@ class OnlineAppointment(http.Controller):
             vals = {
                 'partner_id': request.env.user.partner_id.id,
                 'appointee_id': self.appointee_id_to_partner_id(appointee_id),
-                'event_id': appointment.id
+                'event_id': appointment.id,
+                'meeting_url': url,
+                'meeting_timezone': pytz.all_timezones[int(option.time_zone)]
             }
             registration = request.env['s2u.appointment.registration'].create(
                 vals)
@@ -389,10 +458,10 @@ class OnlineAppointment(http.Controller):
         if not option:
             return []
 
-        week_day = datetime.datetime.strptime(
-            appointment_date, '%d/%m/%Y').weekday()
+        date = datetime.datetime.strptime(
+            appointment_date, '%d/%m/%Y')
         slots = request.env['s2u.appointment.slot'].sudo().search([('user_id', '=', appointee_id),
-                                                                   ('day', '=', str(week_day))])
+                                                                   ('date', '=', str(date))])
         slots = self.filter_slots(slots, criteria)
 
         date_start = datetime.datetime.strptime(
@@ -443,15 +512,13 @@ class OnlineAppointment(http.Controller):
         if not appointee_id:
             return {}
 
-        start_datetimes = {}
+        start_datetimes = []
         start_date = datetime.date(year, month, 1)
         for i in range(31):
             if start_date < datetime.date.today():
                 start_date += datetime.timedelta(days=1)
                 continue
-            if start_date.weekday() not in start_datetimes:
-                start_datetimes[start_date.weekday()] = []
-            start_datetimes[start_date.weekday()].append(
+            start_datetimes.append(
                 start_date.strftime('%Y-%m-%d'))
             start_date += datetime.timedelta(days=1)
             if start_date.month != month:
@@ -464,23 +531,24 @@ class OnlineAppointment(http.Controller):
         if not option:
             return {}
 
-        for weekday, dates in start_datetimes.items():
+        for date in start_datetimes:
+            print(date)
+            print('=====================')
             slots = request.env['s2u.appointment.slot'].sudo().search([('user_id', '=', appointee_id),
-                                                                       ('day', '=', str(weekday))])
+                                                                       ('date', '=', str(date))])
             slots = self.filter_slots(slots, criteria)
 
             for slot in slots:
-                for d in dates:
-                    # if d == today, then skip slots in te past (< current time)
-                    if d == datetime.datetime.now().strftime('%Y-%m-%d') and self.ld_to_utc(d + ' ' + functions.float_to_time(slot.slot), appointee_id) < datetime.datetime.now(pytz.utc):
-                        continue
+                # if d == today, then skip slots in te past (< current time)
+                if date == datetime.datetime.now().strftime('%Y-%m-%d') and self.ld_to_utc(date + ' ' + functions.float_to_time(slot.slot), appointee_id) < datetime.datetime.now(pytz.utc):
+                    continue
 
-                    day_slots.append({
-                        'timeslot': functions.float_to_time(slot.slot),
-                        'date': d,
-                        'start': self.ld_to_utc(d + ' ' + functions.float_to_time(slot.slot), appointee_id).strftime("%Y-%m-%d %H:%M:%S"),
-                        'stop': self.ld_to_utc(d + ' ' + functions.float_to_time(slot.slot), appointee_id, duration=option.duration).strftime("%Y-%m-%d %H:%M:%S")
-                    })
+                day_slots.append({
+                    'timeslot': functions.float_to_time(slot.slot),
+                    'date': date,
+                    'start': self.ld_to_utc(date + ' ' + functions.float_to_time(slot.slot), appointee_id).strftime("%Y-%m-%d %H:%M:%S"),
+                    'stop': self.ld_to_utc(date + ' ' + functions.float_to_time(slot.slot), appointee_id, duration=option.duration).strftime("%Y-%m-%d %H:%M:%S")
+                })
         days_with_free_slots = {}
         for d in day_slots:
             if d['date'] in days_with_free_slots:
@@ -505,6 +573,7 @@ class OnlineAppointment(http.Controller):
             res = request.env.cr.fetchall()
             if not res:
                 days_with_free_slots[d['date']] = True
+            print(days_with_free_slots)
         return days_with_free_slots
 
     @http.route('/online-appointment/timeslots', type='json', auth='public', website=True)
@@ -521,7 +590,9 @@ class OnlineAppointment(http.Controller):
                     'days_with_free_slots': {},
                     'focus_year': 0,
                     'focus_month': 0,
+                    'time_zone': 'Select Subject',
                 }
+        time_zone = 'Select Subject'
 
         try:
             option_id = int(appointment_option)
@@ -548,6 +619,7 @@ class OnlineAppointment(http.Controller):
                     'id': a.id,
                     'name': a.name
                 })
+            time_zone = pytz.all_timezones[int(option.time_zone)]
         else:
             appointees = []
 
@@ -565,6 +637,7 @@ class OnlineAppointment(http.Controller):
             'days_with_free_slots': days_with_free_slots,
             'focus_year': date_parsed.year,
             'focus_month': date_parsed.month,
+            'time_zone': time_zone
         }
 
     @http.route('/online-appointment/month-bookable', type='json', auth='public', website=True)

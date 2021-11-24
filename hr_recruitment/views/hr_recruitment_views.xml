@@ -557,12 +557,6 @@
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="action_hr_my_company">
-            <field name="name">My University</field>
-            <field name="res_model">res.company</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-
         <!--
         hr.applicant.refuse.reason views
     -->
@@ -671,8 +665,6 @@
 
         <!-- ALL JOBS REQUESTS -->
         <menuitem parent="menu_hr_recruitment_configuration" id="menu_hr_job_position_config" action="action_hr_job_config" sequence="10" />
-
-        <menuitem parent="menu_hr_recruitment_configuration" id="menu_hr_my_company_config" action="action_hr_my_company" sequence="10" />
 
         <menuitem id="menu_hr_applicant_refuse_reason" action="hr_applicant_refuse_reason_action" parent="menu_hr_recruitment_configuration" sequence="10" />
 

@@ -7,14 +7,16 @@ from odoo import api, fields, models, _
 class AttachmentFiles(models.Model):
     _name = "hr.attachment"
     _description = "Types of attached documents"
-    _sql_constraints = [
-        ('name_uniq', 'unique (name)',
-         'The name of the Degree of Recruitment must be unique!')
-    ]
+    # _sql_constraints = [
+    #     ('name_uniq', 'unique (name)',
+    #      'The name of the Degree of Recruitment must be unique!')
+    # ]
 
     name = fields.Char("Type of file", required=True, translate=True)
+    company_id = fields.Many2one(
+        'res.company', string='Company', default=lambda self: self.env.company)
     sequence = fields.Integer(
-        "Sequence", default=1)
+        "Sequence", default=100)
 
 
 class Job(models.Model):

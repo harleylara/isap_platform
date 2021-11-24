@@ -92,6 +92,10 @@ odoo.define('s2u_online_appoinment.main', function (require) {
                 self.focus_month = result.focus_month;
                 self.days_with_free_slots[self._get_yearmonth_key.bind(self)()] = result.days_with_free_slots;
 
+                var time_zone = result.time_zone;
+                document.getElementById('time_zone').innerHTML = time_zone;
+                document.getElementById('time_zone_1').innerHTML = time_zone;
+
                 var options = [];
                 var timeslots = result.timeslots;
                 options.push('<option value="">-:--</option>');

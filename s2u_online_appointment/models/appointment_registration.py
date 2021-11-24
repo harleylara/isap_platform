@@ -20,6 +20,9 @@ class AppointmentRegistration(models.Model):
         ('cancel', _('Canceled')),
     ], required=True, default='valid', string='Status', copy=False)
     appointee_interaction = fields.Boolean(string='Appointee interaction', default=False)
+    meeting_url = fields.Char(string="Zoom URL for interview")
+    meeting_password = fields.Char(string="Zoom password for interview")
+    meeting_timezone = fields.Char(string="Time zone of start time")
 
     def cancel_appointment(self):
         for appointment in self:

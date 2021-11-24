@@ -7,24 +7,12 @@ from odoo.exceptions import ValidationError
 
 class AppointmentSlot(models.Model):
     _name = 's2u.appointment.slot'
-    _order = 'user_id, day, slot'
+    _order = 'user_id, date, slot'
     _description = "Appointment Slot"
-    
-    @api.model
-    def _get_week_days(self):
-        return [
-            ('0', _('Monday')),
-            ('1', _('Tuesday')),
-            ('2', _('Wednesday')),
-            ('3', _('Thursday')),
-            ('4', _('Friday')),
-            ('5', _('Saturday')),
-            ('6', _('Sunday'))
-        ]
 
     user_id = fields.Many2one('res.users', string='User', required=True)
-    day = fields.Selection(selection=_get_week_days, default='0', string="Day", required=True)
     slot = fields.Float('Slot', required=True)
+    date = fields.Date(string='Date of meeting')
 
     @api.constrains('slot')
     def _slot_validation(self):

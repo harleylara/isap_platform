@@ -5,8 +5,8 @@ actor Professor
 actor Student
 
 "Admin of university" -> "Admin of system" : Request of creating AdminUniversity account
-"Admin of system" -> "Admin of university" : Create AdminUniversity account
-"Admin of university" -> Professor : Create UnviersityProfessor account
+"Admin of system" -> "Admin of university" : Create AdminUniversity account and University
+"Admin of university" -> Professor : Create UniversityProfessor account
 Professor -> Student: Create and Publish Program
 Student -> Professor: Apply for Program
 Professor <-> Student: Appointment of Interview
