@@ -16,7 +16,7 @@
 - Docker image of odoo v15.0 (IMAGE ID: 1e31bb4d7cd0)
 - Docker image of postgres v14.1-1.pgdg110+1 (IMAGE ID: 3d8d97994585)
 > [This][website_of_docker_image] is the site I referenced when I start up this environment  
-> And, you can also see [my start up guide](#how-to-start-development) in this document.
+> And, you can also see [How to start development](#how-to-start-development) in this document.
 
 ## Directory explanation
 
