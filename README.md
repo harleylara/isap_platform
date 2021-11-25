@@ -1,9 +1,10 @@
-[hr]: hr
-[hr_recruitment]: hr_recruitment
-[s2u_online_appointment]: s2u_online_appointment
-[website_hr_recruitment]: website_hr_recruitment
+[hr]: addons/hr
+[hr_recruitment]: addons/hr_recruitment
+[s2u_online_appointment]: addons/s2u_online_appointment
+[website_hr_recruitment]: addons/website_hr_recruitment
 [website_of_s2u_online_appointment]: https://apps.odoo.com/apps/modules/14.0/s2u_online_appointment/
 [reload]: reload
+[reset]: reset
 [website_of_plantUML]: https://plantuml.com/en/
 [website_of_docker_image]: https://hub.docker.com/_/odoo
 
@@ -20,7 +21,7 @@
 
 ## Directory explanation
 
-### addons
+### /addons
 
 In this directory, there are custom addons. And there are two categories below,
 - Installed custom addon
@@ -50,16 +51,33 @@ Then I copy these customized addons to source code by using [reload script][relo
 
 This is the way to customize existed addon.
 
-### uml
+### /uml
 
 This directory contains the UML files described in Plant UML.
 You can see [here][website_of_plantUML] if you want to know about Plant UML.
 
-### docs
+### /docs
 
 This directory contains documents of this project as markdown files.
 
 
 ## How to start development
 
-1. 
+1. Execute ./setup
+1. localhost:8069 in browser
+1. Enter Master Password, Database Name, Email and Password
+1. Execute ./reload
+1. Upgrade "Base" addon
+1. Install "ISAP Recruitment" addon
+1. Making website (I want an elearning platform for my foreign exchange students organization business, with the main objective to schedule appointments)
+1. Add "Programs", "Appointment" and "Portal" to menu bar
+1. Change to debug mode  
+   localhost:8069/web?debug=1
+1. Check "Free sign up" on Setting -> Permissions -> Customer Account
+1. Setting two access rights
+   1. Add "Recruitment / Admin university" from Settings -> Users & Companies -> Groups -> Admin University -> Inherited -> Add a line
+   1. Add "Recruitment / Professor" from Settings -> Users & Companies -> Groups -> Professor -> Inherited -> Add a line
+
+## How to create Admin University account and University instance by Admin of system
+
+## How to create Professor account by Admin University account

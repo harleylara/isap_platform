@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="base.module_category_human_resources_employees" model="ir.module.category">
+        <field name="description">Helps you manage your employees.</field>
+        <field name="sequence">9</field>
+    </record>
+
+    <record id="group_hr_admin_university" model="res.groups">
+        <field name="name">Admin university</field>
+        <field name="category_id" ref="base.module_category_human_resources_employees" />
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_private_addresses'), ref('base.group_user')])]" />
+        <field name="comment">The user will be able to approve document created by Admin university.</field>
+    </record>
+
+    <record id="group_hr_professor" model="res.groups">
+        <field name="name">Professor</field>
+        <field name="category_id" ref="base.module_category_human_resources_employees" />
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_private_addresses'), ref('base.group_user')])]" />
+        <field name="comment">The user will be able to approve document created by Professors.</field>
+    </record>
+
+    <record id="group_hr_user" model="res.groups">
+        <field name="name">Officer</field>
+        <field name="category_id" ref="base.module_category_human_resources_employees"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_private_addresses'), ref('base.group_user')])]"/>
+        <field name="comment">The user will be able to approve document created by employees.</field>
+    </record>
+
+    <record id="group_hr_manager" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="comment">The user will have access to the human resources configuration as well as statistic reports.</field>
+        <field name="category_id" ref="base.module_category_human_resources_employees"/>
+        <field name="implied_ids" eval="[(4, ref('group_hr_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+<data noupdate="1">
+    <record id="base.default_user" model="res.users">
+        <field name="groups_id" eval="[(4,ref('group_hr_manager'))]"/>
+    </record>
+
+    <record id="hr_employee_comp_rule" model="ir.rule">
+        <field name="name">Employee multi company rule</field>
+        <field name="model_id" ref="model_hr_employee"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="hr_dept_comp_rule" model="ir.rule">
+        <field name="name">Department multi company rule</field>
+        <field name="model_id" ref="model_hr_department"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="hr_employee_public_comp_rule" model="ir.rule">
+        <field name="name">Employee multi company rule</field>
+        <field name="model_id" ref="model_hr_employee_public"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <!-- <record id="hr_job_comp_rule" model="ir.rule">
+        <field name="name">Job multi company rule</field>
+        <field name="model_id" ref="model_hr_job"/>
+        <field eval="False" name="global" />
+        <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+    </record> -->
+
+    <!-- Revised for ISAP platform from here -->
+
+    <record id="access_hr_attachment_admin_university_and_professor" model="ir.rule">
+        <field name="name">access.hr.attachment.admin.university.and.professor</field>
+        <field name="model_id" ref="model_hr_attachment" />
+        <field eval="False" name="global" />
+        <field name="groups" eval="[Command.link(ref('group_hr_admin_university')),Command.link(ref('group_hr_professor'))]" />
+        <field name="domain_force">['|',('company_id','=',company_id),('company_id', '=', 1)]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="True" />
+    </record>
+
+    <record id="access_hr_department_admin_university_and_professor" model="ir.rule">
+        <field name="name">access.hr.department.admin.university.and.professor</field>
+        <field name="model_id" ref="model_hr_department" />
+        <field eval="False" name="global" />
+        <field name="groups" eval="[Command.link(ref('group_hr_admin_university')),Command.link(ref('group_hr_professor'))]" />
+        <field name="domain_force">[('company_id','=',company_id)]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="True" />
+    </record>
+
+    <record id="access_hr_department_professor" model="ir.rule">
+        <field name="name">access.hr.department.professor</field>
+        <field name="model_id" ref="model_hr_department" />
+        <field eval="False" name="global" />
+        <field name="groups" eval="[Command.link(ref('group_hr_professor'))]" />
+        <field name="domain_force">[('company_id','=',company_id)]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+
+    <!-- to here -->
+</data>
+</odoo>
