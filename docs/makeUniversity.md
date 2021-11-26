@@ -7,7 +7,7 @@ But, Admin University account can Edit the information of University.
 ## Creation of University instance
 
 1. The university instance is made with Company model. So, you can create university instance from  
-    "Setting -> Users & Companies -> Companies"
+    "Setting -> Users & Companies -> Companies"  
     <img src="images/click_company.png" width="500px" />
 
 2. Click Create button  
