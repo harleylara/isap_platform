@@ -31,12 +31,12 @@
 4. Activate this account.
    1. log out from Administrator
    1. Click "Reset Password"  
-   <img src="images/click_reset_pass.png" width="200px" />  
+      <img src="images/click_reset_pass.png" width="200px" />  
    1. Enter the Email Address of Admin University account and press Confirm button  
    1. The Error like below picture will emerge but no probrem, please login as a Administorator  
-   <img src="images/error_reset.png" width="200px" />  
+      <img src="images/error_reset.png" width="200px" />  
    1. See the user detail of Admin University account and click the link green background  
-   <img src="images/reset_green_link.png" width="500px" />  
+      <img src="images/reset_green_link.png" width="500px" />  
    1. Enter the password and press Confirm button
 
 
