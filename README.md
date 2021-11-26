@@ -5,6 +5,8 @@
 [website_of_s2u_online_appointment]: https://apps.odoo.com/apps/modules/14.0/s2u_online_appointment/
 [reload]: reload
 [reset]: reset
+[setup]: setup
+[clear_container]: clear_container
 [website_of_plantUML]: https://plantuml.com/en/
 [website_of_docker_image]: https://hub.docker.com/_/odoo
 
@@ -63,7 +65,7 @@ This directory contains documents of this project as markdown files.
 
 ## How to start development
 
-1. Execute ./setup
+1. Execute [./setup][setup]
 1. localhost:8069 in browser
 1. Enter Master Password, Database Name, Email and Password
 1. Execute ./reload

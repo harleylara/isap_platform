@@ -168,7 +168,7 @@
             <field name="name">company rule erp manager</field>
             <field name="model_id" ref="model_res_company" />
             <field eval="False" name="global" />
-            <field name="groups" eval="[Command.set([ref('base.group_erp_manager')])]" />
+            <field name="groups" eval="[Command.set([ref('base.group_administrator')])]" />
             <field name="domain_force">[(1,'=',1)]</field>
         </record>
 
