@@ -15,8 +15,8 @@
 [makeAdminUniversityAccount]: docs/makeAdminUniversityAccount.md
 [makeProfessorAccount]: docs/makeProfessorAccount.md
 [makeIsapProgram]: docs/makeIsapProgram.md
-[makeAppointment]: docs/makeAppointment.md
 [signUpStudent]: docs/signUpStudent.md
+[makeAppointment]: docs/makeAppointment.md
 [theStructureOfIsapPlatform]: docs/theStructureOfIsapPlatform.md
 [theStructureOfOdooAddons]: docs/theStructureOfOdooAddons.md
 [howToUpgradeCustomAddons]: docs/howToUpgradeCustomAddons.md
@@ -34,10 +34,10 @@
 - How to use this system
   - [Make University (Company) instance][makeUniversity]
   - [Make Admin University Account][makeAdminUniversityAccount]
-  - [Make Proffessor Account][makeProfessorAccount]
+  - [Make Professor Account][makeProfessorAccount]
   - [Make ISAP Program][makeIsapProgram]
-  - [Make appointment between professor and student][makeAppointment]
-  - [Sign up as student][signUpStudent]
+  - [Sign up as a student and apply for ISAP Program][signUpStudent]
+  - [Make appointment of interview between professor and student][makeAppointment]
 - Tips of development
   - [The structure of ISAP platform][theStructureOfIsapPlatform] (I recommend reading this first)
   - [The structure of odoo addons][theStructureOfOdooAddons] 
