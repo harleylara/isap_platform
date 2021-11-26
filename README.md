@@ -100,27 +100,27 @@ This directory contains documents of this project as markdown files.
 
 1. Execute [./setup][setup]
    
-2. Open [localhost:8069][link_of_odoo] in browser
+1. Open [localhost:8069][link_of_odoo] in browser
    
-3. Enter Master Password, Database Name, Email and Password  
+1. Enter Master Password, Database Name, Email and Password  
    <img src="docs/images/init_of_database.png" width="400px"/>
    - Master Password: Password for Database
    - Database Name: It is used when you want to login database server
    - Email: Login Email address for Administrator account
    - Password: Login Password for Administrator account
 
-4. Execute [./reload][reload]
+1. Execute [./reload][reload]
    
-5. Upgrade "Base" addon
+1. Upgrade "Base" addon
     1. Remove "Apps" tag from search bar
       <img src="docs/images/remove_app_tag.png" width="600px" />
     1. Search "Base" and Upgrade "Base" addon.
       <img src="docs/images/upgrade_base.png" width="600px"/>
 
-6. Install "ISAP Recruitment" addon  
+1. Install "ISAP Recruitment" addon  
    <img src="docs/images/install_recruitment.png" width="300px"/>
 
-7. Making website  
+1. Making website  
    1. Choose type of Website  
    (My case: I want an elearning platform for my foreign exchange students organization business, 
 with the main objective to schedule appointments)  
@@ -141,14 +141,14 @@ with the main objective to schedule appointments)
     <img src="docs/images/add_appointments.png" width="500px"/>
     <img src="docs/images/add_portal.png" width="500px"/>
 
-2.  Change to debug mode by entering below in url bar  
+1.  Change to debug mode by entering below in url bar  
    **localhost:8069/web?debug=1**
 
-11. Check "Free sign up" on Setting -> Permissions -> Customer Account
+1. Check "Free sign up" on Setting -> Permissions -> Customer Account
     <img src="docs/images/click_setting.png" width="500px" />
     <img src="docs/images/click_free_sign_up.png" width="500px"/>
 
-12. Setting two access rights
+1. Setting two access rights
     1. Click "Users & Companies -> Groups"  
       <img src="docs/images/setting_user_groups.png" width="500px"/>
     1. Add "Recruitment / Admin university" from Admin University -> Inherited -> Add a line
