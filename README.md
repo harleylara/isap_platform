@@ -9,9 +9,42 @@
 [clear_container]: clear_container
 [website_of_plantUML]: https://plantuml.com/en/
 [website_of_docker_image]: https://hub.docker.com/_/odoo
+[link_of_odoo]: http://localhost:8069
+
+[makeUniversity]: docs/makeUniversity.md
+[makeAdminUniversityAccount]: docs/makeAdminUniversityAccount.md
+[makeProfessorAccount]: docs/makeProfessorAccount.md
+[makeIsapProgram]: docs/makeIsapProgram.md
+[makeAppointment]: docs/makeAppointment.md
+[signUpStudent]: docs/signUpStudent.md
+[theStructureOfIsapPlatform]: docs/theStructureOfIsapPlatform.md
+[theStructureOfOdooAddons]: docs/theStructureOfOdooAddons.md
+[howToUpgradeCustomAddons]: docs/howToUpgradeCustomAddons.md
+[accessRulesOfThisPlatform]: docs/accessRulesOfThisPlatform.md
+[howToDefineAccessRules]: docs/howToDefineAccessRules.md
 
 
-# ISAP platform with odoo
+# ISAP platform with odoo documents
+
+## INDEX
+- In this document
+  - [Development Environment](#development-environment)
+  - [Directory Explanation](#directory-explanation)
+  - [How to start development](#how-to-start-development)
+- How to use this system
+  - [Make University (Company) instance][makeUniversity]
+  - [Make Admin University Account][makeAdminUniversityAccount]
+  - [Make Proffessor Account][makeProfessorAccount]
+  - [Make ISAP Program][makeIsapProgram]
+  - [Make appointment between professor and student][makeAppointment]
+  - [Sign up as student][signUpStudent]
+- Tips of development
+  - [The structure of ISAP platform][theStructureOfIsapPlatform] (I recommend reading this first)
+  - [The structure of odoo addons][theStructureOfOdooAddons] 
+  - [How to upgrade custom addons][howToUpgradeCustomAddons]
+- About access rule
+  - [Access rules of this platform][accessRulesOfThisPlatform]
+  - [How to define access rules][howToDefineAccessRules]
 
 ## Development Environment
 - macOS Big Sur v11.6
@@ -19,7 +52,7 @@
 - Docker image of odoo v15.0 (IMAGE ID: 1e31bb4d7cd0)
 - Docker image of postgres v14.1-1.pgdg110+1 (IMAGE ID: 3d8d97994585)
 > [This][website_of_docker_image] is the site I referenced when I start up this environment  
-> And, you can also see [How to start development](#how-to-start-development) in this document.
+> But, you should see [How to start development](#how-to-start-development) in this document when you start development.
 
 ## Directory explanation
 
@@ -66,20 +99,62 @@ This directory contains documents of this project as markdown files.
 ## How to start development
 
 1. Execute [./setup][setup]
-1. localhost:8069 in browser
-1. Enter Master Password, Database Name, Email and Password
-1. Execute ./reload
-1. Upgrade "Base" addon
-1. Install "ISAP Recruitment" addon
-1. Making website (I want an elearning platform for my foreign exchange students organization business, with the main objective to schedule appointments)
+   
+2. Open [localhost:8069][link_of_odoo] in browser
+   
+3. Enter Master Password, Database Name, Email and Password  
+   <img src="docs/images/init_of_database.png" width="400px"/>
+   - Master Password: Password for Database
+   - Database Name: It is used when you want to login database server
+   - Email: Login Email address for Administrator account
+   - Password: Login Password for Administrator account
+
+4. Execute [./reload][reload]
+   
+5. Upgrade "Base" addon
+    1. Remove "Apps" tag from search bar
+    <img src="docs/images/remove_app_tag.png" width="600px" />
+    1. Search "Base" and Upgrade "Base" addon.
+    <img src="docs/images/upgrade_base.png" width="600px"/>
+
+6. Install "ISAP Recruitment" addon  
+   <img src="docs/images/install_recruitment.png" width="300px"/>
+
+7. Making website  
+   1. Choose type of Website  
+   (My case: I want an elearning platform for my foreign exchange students organization business, 
+with the main objective to schedule appointments)  
+   <img src="docs/images/setup_website.png" width="500px"/>
+   1. Choose color theme
+   1. Add Pages and Features and click "Build my website"  
+   (My case: I didn't choose any applcations)
+   1. Choose your favorite Theme  
+   (My case: I chose right one)
+
 1. Add "Programs", "Appointment" and "Portal" to menu bar
-1. Change to debug mode  
-   localhost:8069/web?debug=1
-1. Check "Free sign up" on Setting -> Permissions -> Customer Account
-1. Setting two access rights
-   1. Add "Recruitment / Admin university" from Settings -> Users & Companies -> Groups -> Admin University -> Inherited -> Add a line
-   1. Add "Recruitment / Professor" from Settings -> Users & Companies -> Groups -> Professor -> Inherited -> Add a line
+   1. Click "Pages -> Edit Menu"  
+   <img src="docs/images/click_edit_menu.png" width="500px"/>
+   2. Click add Menu Item  
+   <img src="docs/images/add_menu_item.png" width="500px"/>
+   1. Make three manu items like these pictures below  
+   <img src="docs/images/add_programs.png" width="500px" />
+   <img src="docs/images/add_appointments.png" width="500px"/>
+   <img src="docs/images/add_portal.png" width="500px"/>
 
-## How to create Admin University account and University instance by Admin of system
+2.  Change to debug mode by entering below in url bar  
+   **localhost:8069/web?debug=1**
 
-## How to create Professor account by Admin University account
+11. Check "Free sign up" on Setting -> Permissions -> Customer Account
+    <img src="docs/images/click_setting.png" width="500px" />
+    <img src="docs/images/click_free_sign_up.png" width="500px"/>
+
+12. Setting two access rights
+    1. Click "Users & Companies -> Groups"  
+    <img src="docs/images/setting_user_groups.png" width="500px"/>
+    1. Add "Recruitment / Admin university" from Admin University -> Inherited -> Add a line
+    2. Add "Recruitment / Professor" from Professor -> Inherited -> Add a line  
+    <img src="docs/images/groups.png" width="500px"/>
+    <img src="docs/images/admin_university_group.png" width="700px"/>
+    <img src="docs/images/professor_group.png" width="700px"/>
+
+Now, you can start developing as a Administrator.
