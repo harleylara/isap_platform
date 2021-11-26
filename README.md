@@ -103,40 +103,40 @@ This directory contains documents of this project as markdown files.
 1. Open [localhost:8069][link_of_odoo] in browser
    
 1. Enter Master Password, Database Name, Email and Password  
-   <img src="docs/images/init_of_database.png" width="400px"/>
-   - Master Password: Password for Database
-   - Database Name: It is used when you want to login database server
-   - Email: Login Email address for Administrator account
-   - Password: Login Password for Administrator account
+  <img src="docs/images/init_of_database.png" width="400px"/>
+  - Master Password: Password for Database
+  - Database Name: It is used when you want to login database server
+  - Email: Login Email address for Administrator account
+  - Password: Login Password for Administrator account
 
 1. Execute [./reload][reload]
    
 1. Upgrade "Base" addon
-    1. Remove "Apps" tag from search bar  
-      <img src="docs/images/remove_app_tag.png" width="600px" />  
-    1. Search "Base" and Upgrade "Base" addon.  
-      <img src="docs/images/upgrade_base.png" width="600px"/>  
+  1. Remove "Apps" tag from search bar  
+    <img src="docs/images/remove_app_tag.png" width="600px" />  
+  1. Search "Base" and Upgrade "Base" addon.  
+    <img src="docs/images/upgrade_base.png" width="600px"/>  
 
 1. Install "ISAP Recruitment" addon  
-   <img src="docs/images/install_recruitment.png" width="300px"/>  
+  <img src="docs/images/install_recruitment.png" width="300px"/>  
 
 1. Making website  
-   1. Choose type of Website  
-   (My case: I want an elearning platform for my foreign exchange students organization business, 
+  1. Choose type of Website  
+  (My case: I want an elearning platform for my foreign exchange students organization business, 
 with the main objective to schedule appointments)  
     <img src="docs/images/setup_website.png" width="500px"/>  
-   1. Choose color theme
-   1. Add Pages and Features and click "Build my website"  
-   (My case: I didn't choose any applcations)
-   1. Choose your favorite Theme  
-   (My case: I chose right one)
+  1. Choose color theme
+  1. Add Pages and Features and click "Build my website"  
+  (My case: I didn't choose any applcations)
+  1. Choose your favorite Theme  
+  (My case: I chose right one)
 
 1. Add "Programs", "Appointment" and "Portal" to menu bar
-   1. Click "Pages -> Edit Menu"  
+  1. Click "Pages -> Edit Menu"  
     <img src="docs/images/click_edit_menu.png" width="500px"/>  
-   1. Click add Menu Item  
+  1. Click add Menu Item  
     <img src="docs/images/add_menu_item.png" width="500px"/>  
-   1. Make three manu items like these pictures below  
+  1. Make three manu items like these pictures below  
     <img src="docs/images/add_programs.png" width="500px" />  
     <img src="docs/images/add_appointments.png" width="500px"/>  
     <img src="docs/images/add_portal.png" width="500px"/>  
@@ -149,12 +149,12 @@ with the main objective to schedule appointments)
     <img src="docs/images/click_free_sign_up.png" width="500px"/>  
 
 1. Setting two access rights
-    1. Click "Users & Companies -> Groups"  
-      <img src="docs/images/setting_user_groups.png" width="500px"/>  
-    1. Add "Recruitment / Admin university" from Admin University -> Inherited -> Add a line  
-    1. Add "Recruitment / Professor" from Professor -> Inherited -> Add a line  
-      <img src="docs/images/groups.png" width="500px"/>  
-      <img src="docs/images/admin_university_group.png" width="700px"/>  
-      <img src="docs/images/professor_group.png" width="700px"/>  
+  1. Click "Users & Companies -> Groups"  
+    <img src="docs/images/setting_user_groups.png" width="500px"/>  
+  1. Add "Recruitment / Admin university" from Admin University -> Inherited -> Add a line  
+  1. Add "Recruitment / Professor" from Professor -> Inherited -> Add a line  
+    <img src="docs/images/groups.png" width="500px"/>  
+    <img src="docs/images/admin_university_group.png" width="700px"/>  
+    <img src="docs/images/professor_group.png" width="700px"/>  
 
 Now, you can start developing as a Administrator.
