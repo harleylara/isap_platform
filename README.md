@@ -50,7 +50,7 @@
 - macOS Big Sur v11.6
 - Docker desktop v3.6.0
 - Docker image of odoo v15.0 (IMAGE ID: 1e31bb4d7cd0)
-- Docker image of postgres v14.1-1.pgdg110+1 (IMAGE ID: 3d8d97994585)
+- Docker image of postgres v13 (IMAGE ID: d3ae557d4662)
 > [This][website_of_docker_image] is the site I referenced when I start up this environment  
 > But, you should see [How to start development](#how-to-start-development) in this document when you start development.
 
