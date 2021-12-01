@@ -3,9 +3,9 @@
 [s2u_online_appointment]: addons/s2u_online_appointment
 [website_hr_recruitment]: addons/website_hr_recruitment
 [website_of_s2u_online_appointment]: https://apps.odoo.com/apps/modules/14.0/s2u_online_appointment/
-[reload]: reload
-[reset]: reset
-[setup]: setup
+[reload]: reload.sh
+[reset]: reset.sh
+[setup]: setup.sh
 [clear_container]: clear_container
 [website_of_plantUML]: https://plantuml.com/en/
 [website_of_docker_image]: https://hub.docker.com/_/odoo
@@ -47,8 +47,8 @@
   - [How to define access rules][howToDefineAccessRules]
 
 ## Development Environment
-- macOS Big Sur v11.6
-- Docker desktop v3.6.0
+- Windows 10 Pro
+- Docker desktop v4.2.0
 - Docker image of odoo v15.0 (IMAGE ID: 1e31bb4d7cd0)
 - Docker image of postgres v13 (IMAGE ID: d3ae557d4662)
 > [This][website_of_docker_image] is the site I referenced when I start up this environment  
@@ -97,49 +97,52 @@ This directory contains documents of this project as markdown files.
 
 
 ## How to start development
+1. Install Docker Desktop and WSL by following [here](https://docs.docker.com/desktop/windows/wsl/).
 
-1. Execute [./setup][setup]
+1. Execute `bash setup.sh` in powershell or `./setup.sh` in WSL  
+  If you modify .sh file in Windows, please execute `bash crlf_to_lf.sh` before executing .sh file.  
+  This process eliminate the difference of line feed code between Windows and Linux.
    
 1. Open [localhost:8069][link_of_odoo] in browser
    
 1. Enter Master Password, Database Name, Email and Password  
   <img src="docs/images/init_of_database.png" width="400px"/>
-  - Master Password: Password for Database
-  - Database Name: It is used when you want to login database server
-  - Email: Login Email address for Administrator account
-  - Password: Login Password for Administrator account
+    - Master Password: Password for Database
+    - Database Name: It is used when you want to login database server
+    - Email: Login Email address for Administrator account
+    - Password: Login Password for Administrator account
 
-1. Execute [./reload][reload]
+1. Execute `bash reload.sh` in powershell or `./reload.sh` in WSL
    
 1. Upgrade "Base" addon
-  1. Remove "Apps" tag from search bar  
-    <img src="docs/images/remove_app_tag.png" width="600px" />  
-  1. Search "Base" and Upgrade "Base" addon.  
-    <img src="docs/images/upgrade_base.png" width="600px"/>  
+    1. Remove "Apps" tag from search bar  
+      <img src="docs/images/remove_app_tag.png" width="600px" />  
+    1. Search "Base" and Upgrade "Base" addon.  
+      <img src="docs/images/upgrade_base.png" width="600px"/>  
 
 1. Install "ISAP Recruitment" addon  
   <img src="docs/images/install_recruitment.png" width="300px"/>  
 
 1. Making website  
-  1. Choose type of Website  
-  (My case: I want an elearning platform for my foreign exchange students organization business, 
+    1. Choose type of Website  
+    (My case: I want an elearning platform for my foreign exchange students organization business, 
 with the main objective to schedule appointments)  
-    <img src="docs/images/setup_website.png" width="500px"/>  
-  1. Choose color theme
-  1. Add Pages and Features and click "Build my website"  
+      <img src="docs/images/setup_website.png" width="500px"/>  
+    1. Choose color theme
+    1. Add Pages and Features and click "Build my website"  
   (My case: I didn't choose any applcations)
-  1. Choose your favorite Theme  
+    1. Choose your favorite Theme  
   (My case: I chose right one)
 
 1. Add "Programs", "Appointment" and "Portal" to menu bar
-  1. Click "Pages -> Edit Menu"  
-    <img src="docs/images/click_edit_menu.png" width="500px"/>  
-  1. Click add Menu Item  
-    <img src="docs/images/add_menu_item.png" width="500px"/>  
-  1. Make three manu items like these pictures below  
-    <img src="docs/images/add_programs.png" width="500px" />  
-    <img src="docs/images/add_appointments.png" width="500px"/>  
-    <img src="docs/images/add_portal.png" width="500px"/>  
+    1. Click "Pages -> Edit Menu"  
+      <img src="docs/images/click_edit_menu.png" width="500px"/>  
+    1. Click add Menu Item  
+      <img src="docs/images/add_menu_item.png" width="500px"/>  
+    1. Make three manu items like these pictures below  
+      <img src="docs/images/add_programs.png" width="500px" />  
+      <img src="docs/images/add_appointments.png" width="500px"/>  
+      <img src="docs/images/add_portal.png" width="500px"/>  
 
 1.  Change to debug mode by entering below in url bar  
    **localhost:8069/web?debug=1**
@@ -149,12 +152,12 @@ with the main objective to schedule appointments)
     <img src="docs/images/click_free_sign_up.png" width="500px"/>  
 
 1. Setting two access rights
-  1. Click "Users & Companies -> Groups"  
-    <img src="docs/images/setting_user_groups.png" width="500px"/>  
-  1. Add "Recruitment / Admin university" from Admin University -> Inherited -> Add a line  
-  1. Add "Recruitment / Professor" from Professor -> Inherited -> Add a line  
-    <img src="docs/images/groups.png" width="500px"/>  
-    <img src="docs/images/admin_university_group.png" width="700px"/>  
-    <img src="docs/images/professor_group.png" width="700px"/>  
+    1. Click "Users & Companies -> Groups"  
+      <img src="docs/images/setting_user_groups.png" width="500px"/>  
+    1. Add "Recruitment / Admin university" from Admin University -> Inherited -> Add a line  
+    1. Add "Recruitment / Professor" from Professor -> Inherited -> Add a line  
+      <img src="docs/images/groups.png" width="500px"/>  
+      <img src="docs/images/admin_university_group.png" width="700px"/>  
+      <img src="docs/images/professor_group.png" width="700px"/>  
 
 Now, you can start developing as a Administrator.
