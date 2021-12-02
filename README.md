@@ -116,9 +116,9 @@ This directory contains documents of this project as markdown files.
    
 1. Upgrade "Base" addon
     1. Remove "Apps" tag from search bar  
-      <img src="docs/images/remove_app_tag.png" width="600px" />  
+        <img src="docs/images/remove_app_tag.png" width="600px" />  
     1. Search "Base" and Upgrade "Base" addon.  
-      <img src="docs/images/upgrade_base.png" width="600px"/>  
+        <img src="docs/images/upgrade_base.png" width="600px"/>  
 
 1. Install "ISAP Recruitment" addon  
     <img src="docs/images/install_recruitment.png" width="300px"/>  
