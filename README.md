@@ -126,7 +126,7 @@ This directory contains documents of this project as markdown files.
 1. Making website  
     1. Choose type of Website  
    (My case: I want an elearning platform for my foreign exchange students organization business, with the main objective to schedule appointments)  
-      <img src="docs/images/setup_website.png" width="500px"/>  
+        <img src="docs/images/setup_website.png" width="500px"/>  
     1. Choose color theme
     1. Add Pages and Features and click "Build my website"  
   (My case: I didn't choose any applcations)
@@ -135,13 +135,13 @@ This directory contains documents of this project as markdown files.
 
 1. Add "Programs", "Appointment" and "Portal" to menu bar
     1. Click "Pages -> Edit Menu"  
-      <img src="docs/images/click_edit_menu.png" width="500px"/>  
+        <img src="docs/images/click_edit_menu.png" width="500px"/>  
     1. Click add Menu Item  
-      <img src="docs/images/add_menu_item.png" width="500px"/>  
+        <img src="docs/images/add_menu_item.png" width="500px"/>  
     1. Make three manu items like these pictures below  
-      <img src="docs/images/add_programs.png" width="500px" />  
-      <img src="docs/images/add_appointments.png" width="500px"/>  
-      <img src="docs/images/add_portal.png" width="500px"/>  
+        <img src="docs/images/add_programs.png" width="500px" />  
+        <img src="docs/images/add_appointments.png" width="500px"/>  
+        <img src="docs/images/add_portal.png" width="500px"/>  
 
 1.  Change to debug mode by entering below in url bar  
    **localhost:8069/web?debug=1**
@@ -152,11 +152,11 @@ This directory contains documents of this project as markdown files.
 
 1. Setting two access rights
     1. Click "Users & Companies -> Groups"  
-      <img src="docs/images/setting_user_groups.png" width="500px"/>  
+        <img src="docs/images/setting_user_groups.png" width="500px"/>  
     1. Add "Recruitment / Admin university" from Admin University -> Inherited -> Add a line  
     1. Add "Recruitment / Professor" from Professor -> Inherited -> Add a line  
-      <img src="docs/images/groups.png" width="500px"/>  
-      <img src="docs/images/admin_university_group.png" width="700px"/>  
-      <img src="docs/images/professor_group.png" width="700px"/>  
+        <img src="docs/images/groups.png" width="500px"/>  
+        <img src="docs/images/admin_university_group.png" width="700px"/>  
+        <img src="docs/images/professor_group.png" width="700px"/>  
 
 Now, you can start developing as a Administrator.
