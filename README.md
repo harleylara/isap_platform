@@ -106,7 +106,7 @@ This directory contains documents of this project as markdown files.
 1. Open [localhost:8069][link_of_odoo] in browser
    
 1. Enter Master Password, Database Name, Email and Password  
-  <img src="docs/images/init_of_database.png" width="400px"/>
+    <img src="docs/images/init_of_database.png" width="400px"/>
     - Master Password: Password for Database
     - Database Name: It is used when you want to login database server
     - Email: Login Email address for Administrator account
@@ -121,12 +121,11 @@ This directory contains documents of this project as markdown files.
       <img src="docs/images/upgrade_base.png" width="600px"/>  
 
 1. Install "ISAP Recruitment" addon  
-  <img src="docs/images/install_recruitment.png" width="300px"/>  
+    <img src="docs/images/install_recruitment.png" width="300px"/>  
 
 1. Making website  
     1. Choose type of Website  
-    (My case: I want an elearning platform for my foreign exchange students organization business, 
-with the main objective to schedule appointments)  
+   (My case: I want an elearning platform for my foreign exchange students organization business, with the main objective to schedule appointments)  
       <img src="docs/images/setup_website.png" width="500px"/>  
     1. Choose color theme
     1. Add Pages and Features and click "Build my website"  
