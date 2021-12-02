@@ -159,4 +159,6 @@ This directory contains documents of this project as markdown files.
         <img src="docs/images/admin_university_group.png" width="700px"/>  
         <img src="docs/images/professor_group.png" width="700px"/>  
 
+1. Execute `bash reload.sh` in powershell or `./reload.sh` in WSL again
+
 Now, you can start developing as a Administrator.
