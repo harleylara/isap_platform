@@ -48,6 +48,7 @@
 
 ## Development Environment
 - Windows 10 Pro
+- WSL2
 - Docker desktop v4.2.0
 - Docker image of odoo v15.0 (IMAGE ID: 1e31bb4d7cd0)
 - Docker image of postgres v13 (IMAGE ID: d3ae557d4662)
@@ -150,14 +151,7 @@ This directory contains documents of this project as markdown files.
     <img src="docs/images/click_setting.png" width="500px" />  
     <img src="docs/images/click_free_sign_up.png" width="500px"/>  
 
-1. Setting two access rights
-    1. Click "Users & Companies -> Groups"  
-        <img src="docs/images/setting_user_groups.png" width="500px"/>  
-    1. Add "Recruitment / Admin university" from Admin University -> Inherited -> Add a line  
-    1. Add "Recruitment / Professor" from Professor -> Inherited -> Add a line  
-        <img src="docs/images/groups.png" width="500px"/>  
-        <img src="docs/images/admin_university_group.png" width="700px"/>  
-        <img src="docs/images/professor_group.png" width="700px"/>  
+1. Execute `bash set_default_user.sh` in powershell or `./set_default_user.sh` in WSL
 
 1. Execute `bash reload.sh` in powershell or `./reload.sh` in WSL again
 

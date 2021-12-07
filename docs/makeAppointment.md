@@ -24,6 +24,7 @@
    Fill in information of the meeting.  
    You have to Select the Time zone of professor.  
    I guess almost meetings have time difference because this platform is for studying abroad program.  
+   If you want to invite someone to this appointment, you can add someone at "Users"  
    <img src="images/create_option.png" width="600px" />  
 
 1. Then login as a student and Click "Appointments" tab.   
@@ -39,6 +40,7 @@
 
 1. Professor can see this appointment from "Calendar" addon.  
    And, also can see Meeting URL from here.  
+   The person who invited also can see Meeting URL from "Calendar".   
    <img src="images/appointment_professor.png" width="400px" />  
 
 

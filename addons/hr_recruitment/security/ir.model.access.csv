@@ -38,4 +38,6 @@ access_hr_applicant_category_manager_admin_university,hr.applicant_category,mode
 access_calendar_event_type_hr_admin_university,calendar.event.type.officer,calendar.model_calendar_event_type,group_hr_recruitment_admin_university,1,1,1,0
 access_applicant_get_refuse_reason_admin_university,access.applicant.get.refuse.reason,model_applicant_get_refuse_reason,hr_recruitment.group_hr_recruitment_admin_university,1,1,1,0
 access_res_currency_admin_university,access.res.currency.admin_university,base.model_res_currency,group_hr_recruitment_admin_university,1,1,1,1
+access_s2u_appointment_slot_admin_university,"access.s2u.appointment.slot.admin.university","s2u_online_appointment.model_s2u_appointment_slot","group_hr_recruitment_admin_university",1,1,1,1
+access_s2u_appointment_option_admin_university,"access.s2u.appointment.option.admin.university","s2u_online_appointment.model_s2u_appointment_option","group_hr_recruitment_admin_university",1,1,1,1
 access_res_partner_portal,"res_partner group_portal","base.model_res_partner","base.group_portal",1,0,0,0

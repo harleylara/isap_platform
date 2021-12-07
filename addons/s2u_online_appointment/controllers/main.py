@@ -56,12 +56,12 @@ class OnlineAppointment(http.Controller):
 
         if appointment_option.user_specific:
             user_allowed_ids = appointment_option.users_allowed.ids
-            slots = request.env['s2u.appointment.slot'].sudo().search(
-                [('user_id', 'in', user_allowed_ids)])
-            appointee_ids = [s.user_id.id for s in slots]
+            users = request.env['res.users'].sudo().search(
+                [('id', 'in', user_allowed_ids)])
+            appointee_ids = [user.id for user in users]
         else:
-            slots = request.env['s2u.appointment.slot'].sudo().search([])
-            appointee_ids = [s.user_id.id for s in slots]
+            users = request.env['res.users'].sudo().search([])
+            appointee_ids = [user.id for user in users]
         appointee_ids = list(set(appointee_ids))
         return appointee_ids
 
@@ -102,6 +102,7 @@ class OnlineAppointment(http.Controller):
             try:
                 appointment_option_id = int(
                     form_data.get('appointment_option_id', 0))
+                appointment_option = request.env['s2u.appointment.option'].sudo().search([('id', '=', appointment_option_id)])
             except:
                 appointment_option_id = 0
 
@@ -124,7 +125,8 @@ class OnlineAppointment(http.Controller):
                 'appointment_option_id': appointment_option_id,
                 'appointment_date': appointment_date,
                 'timeslot_id': timeslot_id,
-                'remarks': form_data.get('remarks', '')
+                'remarks': form_data.get('remarks', ''),
+                'appointees': request.env['res.users'].sudo().search([('id', 'in', self.select_appointees(appointment_option=appointment_option))])
             })
 
             if appointee_id and appointment_option_id and appointment_date:
@@ -291,25 +293,29 @@ class OnlineAppointment(http.Controller):
                 _('Slot is already occupied, please choose another slot.')]
             return request.render('s2u_online_appointment.make_appointment', values)
 
+        partner_ids = []
         if request.env.user._is_public():
             partner = request.env['res.partner'].sudo().search(['|', ('phone', 'ilike', values['phone']),
                                                                 ('email', 'ilike', values['email'])])
             if partner:
-                partner_ids = [self.appointee_id_to_partner_id(appointee_id),
-                               partner[0].id]
+                for user in values['appointees']:
+                    partner_ids.append(user.partner_id.id)
+                partner_ids.append(partner[0].id)
             else:
                 partner = request.env['res.partner'].sudo().create({
                     'name': values['name'],
                     'phone': values['phone'],
                     'email': values['email']
                 })
-                partner_ids = [self.appointee_id_to_partner_id(appointee_id),
-                               partner[0].id]
+                for user in values['appointees']:
+                    partner_ids.append(user.partner_id.id)
+                partner_ids.append(partner[0].id)
         else:
-            partner_ids = [self.appointee_id_to_partner_id(appointee_id),
-                           request.env.user.partner_id.id]
+            for user in values['appointees']:
+                    partner_ids.append(user.partner_id.id)
+            partner_ids.append(request.env.user.partner_id.id)
+        
 
-        print(start_datetime.strftime("%Y-%m-%dT%H: %M: %SZ"))
         url, password = self.createMeeting(
             option.name, start_datetime.strftime("%Y-%m-%dT%H: %M: %SZ"), str(int(round(option.duration * 60))), pytz.all_timezones[int(option.time_zone)])
 
@@ -532,8 +538,6 @@ class OnlineAppointment(http.Controller):
             return {}
 
         for date in start_datetimes:
-            print(date)
-            print('=====================')
             slots = request.env['s2u.appointment.slot'].sudo().search([('user_id', '=', appointee_id),
                                                                        ('date', '=', str(date))])
             slots = self.filter_slots(slots, criteria)
@@ -573,7 +577,6 @@ class OnlineAppointment(http.Controller):
             res = request.env.cr.fetchall()
             if not res:
                 days_with_free_slots[d['date']] = True
-            print(days_with_free_slots)
         return days_with_free_slots
 
     @http.route('/online-appointment/timeslots', type='json', auth='public', website=True)
@@ -613,8 +616,13 @@ class OnlineAppointment(http.Controller):
                 option_id)
             appointee_ids = self.select_appointees(
                 criteria=form_criteria, appointment_option=option)
+            all_slots = request.env['s2u.appointment.slot'].sudo().search([('user_id','in',appointee_ids)])
+            available_users = []
+            for slot in all_slots:
+                if not slot.user_id.id in available_users:
+                    available_users.append(slot.user_id.id)
             appointees = []
-            for a in request.env['res.users'].sudo().search([('id', 'in', appointee_ids)]):
+            for a in request.env['res.users'].sudo().search([('id', 'in', available_users)]):
                 appointees.append({
                     'id': a.id,
                     'name': a.name

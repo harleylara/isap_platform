@@ -17,12 +17,15 @@ class AppointmentOption(models.Model):
             timezone_selection.append((str(i), _(timezone)))
         return timezone_selection
 
+    def _get_default_specific_user_ids(self):
+        return [(6, 0, [self.env.uid])]
+
     name = fields.Char(string='Appointment option name', required=True)
     duration = fields.Float('Duration', required=True)
-    user_specific = fields.Boolean(string='User specific', default=False)
+    user_specific = fields.Boolean(string='User specific', default=True)
     application_id = fields.Many2one('hr.applicant',string='application associated with this meeting')
     users_allowed = fields.Many2many('res.users', 's2u_appointment_option_user_rel',
-                                     'option_id', 'user_id', string='Users')
+                                     'option_id', 'user_id', string='Users', default=_get_default_specific_user_ids)
     time_zone = fields.Selection(
         selection=_get_time_zones, default='0', string="Time Zone of Professor", required=True)
 
