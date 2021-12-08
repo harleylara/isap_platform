@@ -9,4 +9,4 @@ docker exec -it -u 0 odoo \
         /mnt/extra-addons/hr/ \
         /usr/lib/python3/dist-packages/odoo/addons/
 docker stop odoo
-docker start odoo -a
+docker start odoo
