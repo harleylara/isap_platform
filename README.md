@@ -113,7 +113,7 @@ This directory contains documents of this project as markdown files.
     - Email: Login Email address for Administrator account
     - Password: Login Password for Administrator account
 
-1. Execute `bash reload.sh` in powershell or `./reload.sh` in WSL
+1. Execute `bash reload.sh -i` in powershell or `./reload.sh -i` in WSL
    
 1. Upgrade "Base" addon
     1. Remove "Apps" tag from search bar  
