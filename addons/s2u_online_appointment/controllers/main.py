@@ -67,7 +67,9 @@ class OnlineAppointment(http.Controller):
 
     def select_options(self, criteria='default'):
 
-        return request.env['s2u.appointment.option'].sudo().search([('application_id.student_id.id','=',request.env.user.id)])
+        applicant = request.env['hr.applicant'].sudo().search([('student_id.id','=',request.env.user.id)])
+
+        return request.env['s2u.appointment.option'].sudo().search([('application_id.id','in',applicant.ids)])
 
     def prepare_values(self, form_data=False, default_appointee_id=False, criteria='default'):
 
