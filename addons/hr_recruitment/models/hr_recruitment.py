@@ -7,6 +7,8 @@ from odoo import api, fields, models, tools, SUPERUSER_ID
 from odoo.tools.translate import _
 from odoo.exceptions import UserError
 
+import pprint
+
 AVAILABLE_PRIORITIES = [
     ('0', 'Normal'),
     ('1', 'Good'),
