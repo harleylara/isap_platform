@@ -1,7 +1,13 @@
 #!/bin/bash
 
-docker exec -it -u 0 odoo \
-    pip3 install pyjwt
+while getopts i OPT
+    do
+        case $OPT in
+            i) docker exec -it -u 0 odoo \
+                pip3 install pyjwt;;
+        esac
+    done
+
 
 docker exec -it -u 0 odoo \
     cp -r /mnt/extra-addons/base/ \
@@ -10,12 +16,14 @@ docker exec -it -u 0 odoo \
         /mnt/extra-addons/hr/ \
         /mnt/extra-addons/website/ \
         /usr/lib/python3/dist-packages/odoo/addons/
-        docker stop odoo
+docker stop odoo
 
-while getopts a OPT
+while getopts ai OPT
     do
         case $OPT in
             a) docker start -a odoo
+               exit 0;;
+            i) docker start odoo
                exit 0;;
             *) echo "undefined option (OPT=$OPT)";;
         esac
