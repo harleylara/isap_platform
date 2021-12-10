@@ -1,14 +1,5 @@
 #!/bin/bash
 
-while getopts i OPT
-    do
-        case $OPT in
-            i) docker exec -it -u 0 odoo \
-                pip3 install pyjwt;;
-        esac
-    done
-
-
 docker exec -it -u 0 odoo \
     cp -r /mnt/extra-addons/base/ \
         /mnt/extra-addons/hr_recruitment/ \
