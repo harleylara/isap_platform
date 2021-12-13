@@ -567,8 +567,13 @@ class Users(models.Model):
         # print(settings_group.id)
         if not settings_group.id in request.env.user.groups_id.ids:
             if 'groups_id' in values:
-                if not values['groups_id'] == [(4,14)]:
-                    raise UserError(_("You cannot choose but professor group."))
+                for value in values['groups_id']:
+                    group = request.env['res.groups'].sudo().search([('id','=',value[1])])
+                    # print(group.name)
+                    # print(value[0])
+                    # print((not group.name == 'Professor') and (value[0] == 4))
+                    if (not group.name == 'Professor') and (value[0] == 4):
+                        raise UserError(_("You cannot choose but professor group.\nPlease push Discard button."))
         if values.get('active') and SUPERUSER_ID in self._ids:
             raise UserError(_("You cannot activate the superuser."))
         if values.get('active') == False and self._uid in self._ids:

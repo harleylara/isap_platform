@@ -102,7 +102,8 @@ This directory contains documents of this project as markdown files.
 
 1. Execute `bash setup.sh` in powershell or `./setup.sh` in WSL  
   If you modify .sh file in Windows, please execute `bash crlf_to_lf.sh` before executing .sh file.  
-  This process eliminate the difference of line feed code between Windows and Linux.
+  This process eliminate the difference of line feed code between Windows and Linux.  
+  I also made [docker-compose.yml](/docker-compose.yml). But if you setup with docker-compose.yml, you have to execute `docker start odoo` after executing docker-compose.yml
    
 1. Open [localhost:8069][link_of_odoo] in browser
    

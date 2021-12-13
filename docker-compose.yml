@@ -10,6 +10,7 @@ services:
     volumes:
       - ./addons:/mnt/extra-addons
       - odoo-data:/var/lib/odoo
+    command: pip3 install pyjwt
   db:
     image: postgres:13
     container_name: db
