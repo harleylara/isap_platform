@@ -14,7 +14,7 @@ import jwt
 import requests
 import json
 from time import time
-from ....config.config import ZOOM
+from ...config import ZOOM
 
 _logger = logging.getLogger(__name__)
 

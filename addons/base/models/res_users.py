@@ -31,6 +31,8 @@ from odoo.osv import expression
 from odoo.service.db import check_super
 from odoo.tools import partition, collections, frozendict, lazy_property, image_process
 
+import pprint
+
 _logger = logging.getLogger(__name__)
 
 # Only users who can modify the user (incl. the user herself) see the real contents of these fields
@@ -558,6 +560,15 @@ class Users(models.Model):
         return users
 
     def write(self, values):
+        # pprint.pprint(values)
+        # pprint.pprint(self.groups_id)
+        settings_group = request.env['res.groups'].sudo().search([('name','=','Settings')])
+        
+        # print(settings_group.id)
+        if not settings_group.id in request.env.user.groups_id.ids:
+            if 'groups_id' in values:
+                if not values['groups_id'] == [(4,14)]:
+                    raise UserError(_("You cannot choose but professor group."))
         if values.get('active') and SUPERUSER_ID in self._ids:
             raise UserError(_("You cannot activate the superuser."))
         if values.get('active') == False and self._uid in self._ids:
