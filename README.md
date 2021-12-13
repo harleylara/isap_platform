@@ -44,7 +44,6 @@
   - [How to upgrade custom addons][howToUpgradeCustomAddons]
 - About access rule
   - [Access rules of this platform][accessRulesOfThisPlatform]
-  - [How to define access rules][howToDefineAccessRules]
 
 ## Development Environment
 - Windows 10 Pro
