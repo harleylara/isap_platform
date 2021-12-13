@@ -2,7 +2,7 @@
 export DIR1=$(pwd)
 echo $DIR1
 docker run -d \
-    -v odoo-db:/var/lib/postgresql/data \
+    -v isap_platform_odoo-db:/var/lib/postgresql/data \
     -e POSTGRES_USER=odoo \
     -e POSTGRES_PASSWORD=odoo \
     -e POSTGRES_DB=postgres \
@@ -10,7 +10,7 @@ docker run -d \
     postgres:13
 docker run -d \
     -v "$DIR1"/addons:/mnt/extra-addons \
-    -v odoo-data:/var/lib/odoo \
+    -v isap_platform_odoo-data:/var/lib/odoo \
     -p 8069:8069 \
     --name odoo \
     --link db:db \
