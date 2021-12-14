@@ -1,2 +1,72 @@
 #!/bin/bash
 
+function usage {
+  cat <<EOM
+Usage: $(basename "$0") [command] [OPTION]...
+  <commands>
+  setup                create and start db and odoo container and install pyjwt
+  reset                stop and remove then create and start db and odoo container
+  reload               stop and start odoo container
+    <option of reload>
+    -a                   start odoo container in foreground
+  clear                stop and delete db and odoo container
+  update               pull from remote repository and reload odoo container (use at server)
+  setuser              set default user's groups
+  pyjwt                install pyjwt module in odoo container
+  crlf                 change crlf to lf in shell script
+  push                 git push (The reason I made this is copying access token of git everytime is troublesome)
+
+  -h or --help         Display help
+EOM
+
+  exit 2
+}
+
+subcommand="$1"
+shift
+
+case $subcommand in
+    setup)
+        ./scripts/setup.sh
+        ;;
+    reset)
+        ./scripts/reset.sh
+        ;;
+    reload)
+        while getopts a OPT
+        do
+            case $OPT in
+                a) ./scripts/reload.sh -a;;
+                *) echo "undefined option (OPT=$OPT)";;
+            esac
+        done
+        ./scripts/reload.sh
+        ;;
+    clear)
+        ./scripts/clear_container.sh
+        ;;
+    update)
+        ./scripts/update_server.sh
+        ;;
+    setuser)
+        ./scripts/set_default_user.sh
+        ;;
+    pyjwt)
+        ./scripts/install_pyjwt.sh
+        ;;
+    crlf)
+        ./scripts/crlf_to_lf.sh
+        ;;
+    push)
+        ./scripts/git_push.sh
+        ;;
+    -h | --help)
+        usage
+        ;;
+    *)
+        cat <<EOM
+Please see usage with either
+$ ./isap -h
+$ ./isap --help
+EOM
+esac

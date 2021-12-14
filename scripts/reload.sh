@@ -9,12 +9,10 @@ docker exec -it -u 0 odoo \
         /usr/lib/python3/dist-packages/odoo/addons/
 docker stop odoo
 
-while getopts ai OPT
+while getopts a OPT
     do
         case $OPT in
             a) docker start -a odoo
-               exit 0;;
-            i) docker start odoo
                exit 0;;
             *) echo "undefined option (OPT=$OPT)";;
         esac
