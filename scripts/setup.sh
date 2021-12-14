@@ -1,4 +1,5 @@
 #!/bin/bash
+
 export DIR1=$(pwd)
 echo $DIR1
 docker run -d \

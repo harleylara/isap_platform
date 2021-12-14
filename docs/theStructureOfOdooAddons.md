@@ -35,7 +35,7 @@ The place where write data to install when you set up isap system(execute ./setu
 ## security/
 
 The place where set access right.  
-How to set access right is written in [here](howToDefineAccessRules.md).
+How to set access right is written in [here](accessRulesOfThisPlatform.md).
 
 Prev  
 [The structure of ISAP platform](theStructureOfIsapPlatform.md)  
