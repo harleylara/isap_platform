@@ -7,6 +7,7 @@ docker exec -it -u 0 odoo \
         /mnt/extra-addons/hr/ \
         /mnt/extra-addons/website/ \
         /usr/lib/python3/dist-packages/odoo/addons/
+docker cp ./config/config.py odoo:/mnt/extra-addons/s2u_online_appointment/controllers/
 docker stop odoo
 
 while getopts a OPT

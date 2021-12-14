@@ -1,12 +1,14 @@
+[base]: addons/base
 [hr]: addons/hr
 [hr_recruitment]: addons/hr_recruitment
 [s2u_online_appointment]: addons/s2u_online_appointment
 [website_hr_recruitment]: addons/website_hr_recruitment
+[website]: [addons/website]
 [website_of_s2u_online_appointment]: https://apps.odoo.com/apps/modules/14.0/s2u_online_appointment/
-[reload]: reload.sh
-[reset]: reset.sh
-[setup]: setup.sh
-[clear_container]: clear_container
+[reload]: scripts/reload.sh
+[reset]: scripts/reset.sh
+[setup]: scripts/setup.sh
+[clear_container]: scripts/clear_container
 [website_of_plantUML]: https://plantuml.com/en/
 [website_of_docker_image]: https://hub.docker.com/_/odoo
 [link_of_odoo]: http://localhost:8069
@@ -62,29 +64,38 @@ In this directory, there are custom addons. And there are two categories below,
 - Installed custom addon
   - [s2u_online_appointment][s2u_online_appointment]
 - Existed custom addon
+  - [base][base]
   - [hr][hr]
   - [hr_recruitment][hr_recruitment]
   - [website_hr_recruitment][website_hr_recruitment]
+  - [website][website]
 
 
 #### Installed custom addon
 
 This includes [s2u_online_appointment][s2u_online_appointment] addon.  
-This addon is installed from [here][website_of_s2u_online_appointment] and made it available in odoo v15.  
+This addon is installed from [here][website_of_s2u_online_appointment] and made available in odoo v15.  
 And, it is automatically mounted as a custom addon when start odoo container.
 
 Please click [here][s2u_online_appointment] if you want to see the detail of s2u_online_appointment addon
 
 #### Existed custom addon
 
-This includes [hr][hr], [hr_recruitment][hr_recruitment] and [website_hr_recruitment][website_hr_recruitment] addons.
+This includes [base][base], [hr][hr], [hr_recruitment][hr_recruitment], [website_hr_recruitment][website_hr_recruitment], and [website][website] addons.
 These addons initially exist in odoo docker container.
-> you can see source code of odoo addon in odoo container(/usr/lib/python3/dist-packages/odoo/addons)
+> you can see the source code of odoo addon in odoo container(/usr/lib/python3/dist-packages/odoo/addons)
 
-I customized these source code in the local environment and mounted to odoo container.
+I customized these source codes in the local environment and mounted to odoo container.
 Then I copy these customized addons to source code by using [reload script][reload]
 
-This is the way to customize existed addon.
+This is the way to customize existed addon. And you can see about it indetail in [here](docs/howToUpgradeCustomAddons.md).
+
+### /config
+
+
+### /scripts
+
+### /sqls
 
 ### /uml
 
@@ -98,8 +109,10 @@ This directory contains documents of this project as markdown files.
 
 ## How to start development
 1. Install Docker Desktop and WSL by following [here](https://docs.docker.com/desktop/windows/wsl/).
+  
+1. set config file
 
-1. Execute `bash setup.sh` in powershell or `./setup.sh` in WSL  
+2. Execute `bash setup.sh` in powershell or `./setup.sh` in WSL  
   If you modify .sh file in Windows, please execute `bash crlf_to_lf.sh` before executing .sh file.  
   This process eliminate the difference of line feed code between Windows and Linux.  
   I also made [docker-compose.yml](/docker-compose.yml). But if you setup with docker-compose.yml, you have to execute `docker start odoo` after executing docker-compose.yml

@@ -20,3 +20,4 @@ docker run -d \
     --link db:db \
     -t odoo
 docker exec -it -u 0 odoo pip3 install pyjwt
+docker cp ./config/config.py odoo:/mnt/extra-addons/s2u_online_appointment/controllers/
