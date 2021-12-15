@@ -4,11 +4,15 @@ function usage {
   cat <<EOM
 Usage: $(basename "$0") [command] [OPTION]...
   <commands>
+  start                start db and odoo container
+    <option of start>
+        -a             start odoo container in foreground
+  stop                 stop db and odoo container
   setup                create and start db and odoo container and install pyjwt
   reset                stop and remove then create and start db and odoo container
   reload               stop and start odoo container
     <option of reload>
-    -a                   start odoo container in foreground
+        -a             start odoo container in foreground
   clear                stop and delete db and odoo container
   update               pull from remote repository and reload odoo container (use at server)
   setuser              set default user's groups
@@ -26,6 +30,19 @@ subcommand="$1"
 shift
 
 case $subcommand in
+    start)
+        while getopts a OPT
+        do
+            case $OPT in
+                a) ./scripts/start.sh -a;;
+                *) echo "undefined option (OPT=$OPT)";;
+            esac
+        done
+        ./scripts/start.sh
+        ;;
+    stop)
+        ./scripts/stop.sh
+        ;;
     setup)
         ./scripts/setup.sh
         ;;

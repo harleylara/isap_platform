@@ -33,6 +33,7 @@
   - [Development Environment](#development-environment)
   - [Directory Explanation](#directory-explanation)
   - [How to start development](#how-to-start-development)
+  - [How to push and update deploied ISAP platform](#how-to-push-and-update-deploied-isap-platform)
 - How to use this system
   - [Make University (Company) instance][makeUniversity]
   - [Make Admin University Account][makeAdminUniversityAccount]
@@ -92,10 +93,19 @@ This is the way to customize existed addon. And you can see about it indetail in
 
 ### /config
 
+The credentials have been contained in this directory.  
+In this development, I used two credentials below.
+ - zoom (config.py)
+ - git (config.txt)
 
 ### /scripts
 
+The script files have been contained in this directory.  
+These directories can be used easily through [isap script](isap).
+
 ### /sqls
+
+The sql files which is used when communicate with db container have been contained in this directory.
 
 ### /uml
 
@@ -110,12 +120,16 @@ This directory contains documents of this project as markdown files.
 ## How to start development
 1. Install Docker Desktop and WSL by following [here](https://docs.docker.com/desktop/windows/wsl/).
   
-1. set config file
+1. Set config file  
+     1. Get credentials from [zoom](https://marketplace.zoom.us/) and [git](https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)  
+     1. Fill in config_sample.py and config_sample.txt
+     1. Rename these files to config.py and config.txt
 
-2. Execute `bash setup.sh` in powershell or `./setup.sh` in WSL  
-  If you modify .sh file in Windows, please execute `bash crlf_to_lf.sh` before executing .sh file.  
+1. Execute `./isap setup`.  
+  If you modify .sh file in Windows, please execute `./isap crlf` before executing .sh file.  
   This process eliminate the difference of line feed code between Windows and Linux.  
-  I also made [docker-compose.yml](/docker-compose.yml). But if you setup with docker-compose.yml, you have to execute `docker start odoo` after executing docker-compose.yml
+  I also made [docker-compose.yml](/docker-compose.yml). But if you setup with docker-compose.yml, you have to execute  
+  `./isap pyjwt` after executing docker-compose.yml
    
 1. Open [localhost:8069][link_of_odoo] in browser
    
@@ -126,7 +140,7 @@ This directory contains documents of this project as markdown files.
     - Email: Login Email address for Administrator account
     - Password: Login Password for Administrator account
 
-1. Execute `bash reload.sh` in powershell or `./reload.sh` in WSL
+1. Execute `./isap reload`.  
    
 1. Upgrade "Base" addon
     1. Remove "Apps" tag from search bar  
@@ -158,14 +172,29 @@ This directory contains documents of this project as markdown files.
         <img src="docs/images/add_portal.png" width="500px"/>  
 
 1.  Change to debug mode by entering below in url bar  
-   **localhost:8069/web?debug=1**
+    **localhost:8069/web?debug=1**
 
 1. Check "Free sign up" on Setting -> Permissions -> Customer Account
     <img src="docs/images/click_setting.png" width="500px" />  
     <img src="docs/images/click_free_sign_up.png" width="500px"/>  
 
-1. Execute `bash set_default_user.sh` in powershell or `./set_default_user.sh` in WSL
+1. Execute `./isap setuser`.  
 
-1. Execute `bash reload.sh` in powershell or `./reload.sh` in WSL again
+1. Execute `./isap reload` again.  
 
-Now, you can start developing as a Administrator.
+Now, you can start developing as a Administrator.  
+You can develop addons in [addons directory](/addons).  
+And you can modify access rights from browser. About access rights, please check [here](docs/accessRulesOfThisPlatform.md).  
+
+[Return to Index](#index).
+
+## How to push and update deploied ISAP platform
+
+1. Execute `git add .` and `git commit -m "your message"`.
+
+1. Execute `git push https://[YOUR_ACCESS_TOKEN]@github.com/kakusuke0605/isap_platform.git branch_name`.  
+   You can also push to git by `./isap push`. But it is pushed to master directory.
+  
+1. Inside of server, execute `./isap update`.
+
+[Return to Index](#index).
