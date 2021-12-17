@@ -69,7 +69,7 @@ This is the architecture of ISAP platform.
 
 1. **communication part between ZOOM API and odoo container**  
    The python code is executed when system make appointment.  
-   The codes of ZOOM API is from line 160 of [/addons/s2u_online_appointment_controllers/main.py](../addons/s2u_online_appointment/controllers/main.py).
+   The codes of ZOOM API is from line 160 of [/addons/s2u_online_appointment/controllers/main.py](../addons/s2u_online_appointment/controllers/main.py).
 
 
 ## Frequently used folders in odoo container

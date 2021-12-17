@@ -75,6 +75,7 @@
                                         </h5>
                                         <div t-if="editable" t-field="job.description" class="mt16 mb0 css_non_editable_mode_hidden" />
                                         <div t-esc="job.description or ''" class="mt16 mb0 css_editable_mode_hidden o_website_hr_recruitment_job_description" />
+                                        <div t-esc="job.company_id.name"/>
                                         <div class="o_job_infos mt16">
                                             <span t-field="job.address_id" t-options='{
                                             "widget": "contact",
